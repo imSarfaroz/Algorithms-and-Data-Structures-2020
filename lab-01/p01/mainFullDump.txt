@@ -1,0 +1,207 @@
+
+main.o:     file format pe-x86-64
+main.o
+architecture: i386:x86-64, flags 0x00000039:
+HAS_RELOC, HAS_DEBUG, HAS_SYMS, HAS_LOCALS
+start address 0x0000000000000000
+
+Characteristics 0x4
+	line numbers stripped
+
+Time/Date		Thu Jan 01 04:00:00 1970
+Magic			0000
+MajorLinkerVersion	0
+MinorLinkerVersion	0
+SizeOfCode		0000000000000000
+SizeOfInitializedData	0000000000000000
+SizeOfUninitializedData	0000000000000000
+AddressOfEntryPoint	0000000000000000
+BaseOfCode		0000000000000000
+ImageBase		0000000000000000
+SectionAlignment	00000000
+FileAlignment		00000000
+MajorOSystemVersion	0
+MinorOSystemVersion	0
+MajorImageVersion	0
+MinorImageVersion	0
+MajorSubsystemVersion	0
+MinorSubsystemVersion	0
+Win32Version		00000000
+SizeOfImage		00000000
+SizeOfHeaders		00000000
+CheckSum		00000000
+Subsystem		00000000	(unspecified)
+DllCharacteristics	00000000
+SizeOfStackReserve	0000000000000000
+SizeOfStackCommit	0000000000000000
+SizeOfHeapReserve	0000000000000000
+SizeOfHeapCommit	0000000000000000
+LoaderFlags		00000000
+NumberOfRvaAndSizes	00000000
+
+The Data Directory
+Entry 0 0000000000000000 00000000 Export Directory [.edata (or where ever we found it)]
+Entry 1 0000000000000000 00000000 Import Directory [parts of .idata]
+Entry 2 0000000000000000 00000000 Resource Directory [.rsrc]
+Entry 3 0000000000000000 00000000 Exception Directory [.pdata]
+Entry 4 0000000000000000 00000000 Security Directory
+Entry 5 0000000000000000 00000000 Base Relocation Directory [.reloc]
+Entry 6 0000000000000000 00000000 Debug Directory
+Entry 7 0000000000000000 00000000 Description Directory
+Entry 8 0000000000000000 00000000 Special Directory
+Entry 9 0000000000000000 00000000 Thread Storage Directory [.tls]
+Entry a 0000000000000000 00000000 Load Configuration Directory
+Entry b 0000000000000000 00000000 Bound Import Directory
+Entry c 0000000000000000 00000000 Import Address Table Directory
+Entry d 0000000000000000 00000000 Delay Import Directory
+Entry e 0000000000000000 00000000 CLR Runtime Header
+Entry f 0000000000000000 00000000 Reserved
+
+The Function Table (interpreted .pdata section contents)
+vma:			BeginAddress	 EndAddress	  UnwindData
+ 0000000000000000:	0000000000000000 0000000000000047 0000000000000000
+ 000000000000000c:	0000000000000047 0000000000000062 000000000000000c
+ 0000000000000018:	0000000000000062 000000000000009e 0000000000000018
+ 0000000000000024:	000000000000009e 00000000000000bc 0000000000000024
+
+Dump of .xdata
+ 0000000000000000 (rva: 00000000): 0000000000000000 - 0000000000000047
+warning: xdata section corrupt
+ 000000000000000c (rva: 0000000c): 0000000000000047 - 0000000000000062
+warning: xdata section corrupt
+ 0000000000000018 (rva: 00000018): 0000000000000062 - 000000000000009e
+warning: xdata section corrupt
+ 0000000000000024 (rva: 00000024): 000000000000009e - 00000000000000bc
+warning: xdata section corrupt
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         000000c0  0000000000000000  0000000000000000  0000017c  2**4
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .data         00000000  0000000000000000  0000000000000000  00000000  2**4
+                  ALLOC, LOAD, DATA
+  2 .bss          00000010  0000000000000000  0000000000000000  00000000  2**4
+                  ALLOC
+  3 .rdata        00000020  0000000000000000  0000000000000000  0000023c  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .xdata        00000030  0000000000000000  0000000000000000  0000025c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 .pdata        00000030  0000000000000000  0000000000000000  0000028c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+  6 .ctors        00000008  0000000000000000  0000000000000000  000002bc  2**3
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+  7 .rdata$zzz    00000020  0000000000000000  0000000000000000  000002c4  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  8 .rdata$.refptr._ZSt4cout 00000010  0000000000000000  0000000000000000  000002e4  2**4
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA, LINK_ONCE_DISCARD (COMDAT .refptr._ZSt4cout 27)
+SYMBOL TABLE:
+[  0](sec -2)(fl 0x00)(ty   0)(scl 103) (nx 1) 0x0000000000000000 main.cpp
+File 
+[  2](sec  4)(fl 0x00)(ty   0)(scl   3) (nx 0) 0x0000000000000000 _ZStL19piecewise_construct
+[  3](sec  3)(fl 0x00)(ty   0)(scl   3) (nx 0) 0x0000000000000000 _ZStL8__ioinit
+[  4](sec  1)(fl 0x00)(ty  20)(scl   2) (nx 1) 0x0000000000000000 main
+AUX tagndx 0 ttlsiz 0x0 lnnos 0 next 0
+[  6](sec  9)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .rdata$.refptr._ZSt4cout
+AUX scnlen 0x8 nreloc 1 nlnno 0 checksum 0x0 assoc 0 comdat 2
+[  8](sec  1)(fl 0x00)(ty  20)(scl   3) (nx 0) 0x0000000000000047 __tcf_0
+[  9](sec  1)(fl 0x00)(ty  20)(scl   3) (nx 0) 0x0000000000000062 _Z41__static_initialization_and_destruction_0ii
+[ 10](sec  1)(fl 0x00)(ty  20)(scl   3) (nx 0) 0x000000000000009e _GLOBAL__sub_I_main
+[ 11](sec  1)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .text
+AUX scnlen 0xbc nreloc 12 nlnno 0
+[ 13](sec  2)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .data
+AUX scnlen 0x0 nreloc 0 nlnno 0
+[ 15](sec  3)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .bss
+AUX scnlen 0x1 nreloc 0 nlnno 0
+[ 17](sec  4)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .rdata
+AUX scnlen 0x12 nreloc 0 nlnno 0
+[ 19](sec  5)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .xdata
+AUX scnlen 0x30 nreloc 0 nlnno 0
+[ 21](sec  6)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .pdata
+AUX scnlen 0x30 nreloc 12 nlnno 0
+[ 23](sec  7)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .ctors
+AUX scnlen 0x8 nreloc 1 nlnno 0
+[ 25](sec  8)(fl 0x00)(ty   0)(scl   3) (nx 1) 0x0000000000000000 .rdata$zzz
+AUX scnlen 0x11 nreloc 0 nlnno 0
+[ 27](sec  9)(fl 0x00)(ty   0)(scl   2) (nx 0) 0x0000000000000000 .refptr._ZSt4cout
+[ 28](sec  0)(fl 0x00)(ty  20)(scl   2) (nx 0) 0x0000000000000000 __main
+[ 29](sec  0)(fl 0x00)(ty  20)(scl   2) (nx 0) 0x0000000000000000 _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+[ 30](sec  0)(fl 0x00)(ty  20)(scl   2) (nx 0) 0x0000000000000000 _ZNSolsEl
+[ 31](sec  0)(fl 0x00)(ty  20)(scl   2) (nx 0) 0x0000000000000000 _ZNSt8ios_base4InitD1Ev
+[ 32](sec  0)(fl 0x00)(ty  20)(scl   2) (nx 0) 0x0000000000000000 _ZNSt8ios_base4InitC1Ev
+[ 33](sec  0)(fl 0x00)(ty  20)(scl   2) (nx 0) 0x0000000000000000 atexit
+[ 34](sec  0)(fl 0x00)(ty   0)(scl   2) (nx 0) 0x0000000000000000 _ZSt4cout
+
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET           TYPE              VALUE 
+0000000000000009 R_X86_64_PC32     __main
+0000000000000010 R_X86_64_PC32     .rdata
+0000000000000017 R_X86_64_PC32     .refptr._ZSt4cout
+000000000000001c R_X86_64_PC32     _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+0000000000000029 R_X86_64_PC32     _ZNSolsEl
+0000000000000030 R_X86_64_PC32     .rdata
+0000000000000038 R_X86_64_PC32     _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+0000000000000052 R_X86_64_PC32     .bss
+0000000000000057 R_X86_64_PC32     _ZNSt8ios_base4InitD1Ev
+0000000000000082 R_X86_64_PC32     .bss
+0000000000000087 R_X86_64_PC32     _ZNSt8ios_base4InitC1Ev
+0000000000000093 R_X86_64_PC32     atexit
+
+
+RELOCATION RECORDS FOR [.pdata]:
+OFFSET           TYPE              VALUE 
+0000000000000000 rva32             .text
+0000000000000004 rva32             .text
+0000000000000008 rva32             .xdata
+000000000000000c rva32             .text
+0000000000000010 rva32             .text
+0000000000000014 rva32             .xdata
+0000000000000018 rva32             .text
+000000000000001c rva32             .text
+0000000000000020 rva32             .xdata
+0000000000000024 rva32             .text
+0000000000000028 rva32             .text
+000000000000002c rva32             .xdata
+
+
+RELOCATION RECORDS FOR [.ctors]:
+OFFSET           TYPE              VALUE 
+0000000000000000 R_X86_64_64       .text
+
+
+RELOCATION RECORDS FOR [.rdata$.refptr._ZSt4cout]:
+OFFSET           TYPE              VALUE 
+0000000000000000 R_X86_64_64       _ZSt4cout
+
+
+Contents of section .text:
+ 0000 554889e5 4883ec20 e8000000 00488d15  UH..H.. .....H..
+ 0010 01000000 488b0d00 000000e8 00000000  ....H...........
+ 0020 baba1203 004889c1 e8000000 00488d15  .....H.......H..
+ 0030 0d000000 4889c1e8 00000000 b8000000  ....H...........
+ 0040 004883c4 205dc355 4889e548 83ec2048  .H.. ].UH..H.. H
+ 0050 8d0d0000 0000e800 00000090 4883c420  ............H.. 
+ 0060 5dc35548 89e54883 ec20894d 10895518  ].UH..H.. .M..U.
+ 0070 837d1001 7521817d 18ffff00 00751848  .}..u!.}.....u.H
+ 0080 8d0d0000 0000e800 00000048 8d0db5ff  ...........H....
+ 0090 ffffe800 00000090 4883c420 5dc35548  ........H.. ].UH
+ 00a0 89e54883 ec20baff ff0000b9 01000000  ..H.. ..........
+ 00b0 e8adffff ff904883 c4205dc3 90909090  ......H.. ].....
+Contents of section .rdata:
+ 0000 0048656c 6c6f2c20 432b2b20 00212121  .Hello, C++ .!!!
+ 0010 0a000000 00000000 00000000 00000000  ................
+Contents of section .xdata:
+ 0000 01080305 08320403 01500000 01080305  .....2...P......
+ 0010 08320403 01500000 01080305 08320403  .2...P.......2..
+ 0020 01500000 01080305 08320403 01500000  .P.......2...P..
+Contents of section .pdata:
+ 0000 00000000 47000000 00000000 47000000  ....G.......G...
+ 0010 62000000 0c000000 62000000 9e000000  b.......b.......
+ 0020 18000000 9e000000 bc000000 24000000  ............$...
+Contents of section .ctors:
+ 0000 9e000000 00000000                    ........        
+Contents of section .rdata$zzz:
+ 0000 4743433a 2028474e 55292039 2e322e30  GCC: (GNU) 9.2.0
+ 0010 00000000 00000000 00000000 00000000  ................
+Contents of section .rdata$.refptr._ZSt4cout:
+ 0000 00000000 00000000 00000000 00000000  ................
