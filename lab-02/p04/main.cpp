@@ -1,12 +1,12 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 main()
 {
-    string word;
-    cin >> word;
+    std::string name;
+    std::getline(std::cin, name);
 
-    cout << "Thank you, " + word + ", and farewell!"
-         << "\n";
+        std::cout << "Thank you, " << name << ", and farewell";
 }
