@@ -3,7 +3,7 @@
 
 using namespace std;
 
-main()
+int main()
 {
     std::string name;
     std::getline(std::cin, name);
