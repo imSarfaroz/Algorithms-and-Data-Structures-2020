@@ -6,31 +6,29 @@ using namespace std;
 
 const int kNamewidth = 25;
 const int kAvaregewisth = 40;
+const string kNoDataMsg = "no data";
 
 int main()
 {
-    string name;
+    string t;
     cout << setfill('.') << fixed << setprecision(2);
-    while(cin >> name)
+    for (string name; cin >> name;)
     {
         double sum = 0;
         int nGrades = 0;
-        int grade;
-
-        while(cin >> grade){
+        for (int grade; cin >> grade;)
+        {
             sum += grade;
-            ++nGrades;        
-            }
-            if(nGrades != 0){
+            ++nGrades;
+        }
+        if (nGrades != 0)
+        {
             cout << left << setw(kNamewidth) << name << "|" << right << setw(kAvaregewisth) << sum / nGrades << "\n";
-            }else{
-                cout << left << setw(kNamewidth) << name << "|" << right << setw(kAvaregewisth)
-                     << "no data"
-                     << "\n";
-                    
-            }
-            if(cin.fail()){
-                cin.clear();
-            }
+        }
+        else
+        {
+            cout << left << setw(kNamewidth) << name << "|" << right << setw(kAvaregewisth) << kNoDataMsg << "\n";
+        }
+        cin.clear();
     }
 }
