@@ -8,6 +8,14 @@ void badSwap(int a, int b)
     a = b;
     b = t;
 }
+
+void goodSwap01(int *p, int *q)
+{
+    int t = *p;
+    *p = *q;
+    *q = t;
+}
+
 using namespace std;
 
 int main()
@@ -27,6 +35,6 @@ int main()
 
     cout << "Before swap a = " << a << ", b = " << b << "\n";
     //swap(a, b) - zero runtime cost abstraction
-    badSwap(a, b);
+    goodSwap01(&a, &b);
     cout << "After swap a = " << a << ", b = " << b << "\n";
 }
