@@ -16,7 +16,6 @@ int main()
   {
 
     int i, maxNum = 0;
-
     for (i = 0; i < 10; i++)
     {
       cin >> cmName[i] >> n[i];
