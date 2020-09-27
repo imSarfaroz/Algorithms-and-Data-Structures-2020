@@ -1,6 +1,3 @@
-
-// Logic is the same as I solved in Uri Problem "Robot Instractions"//
-
 #include <iostream>
 #include <vector>
 
@@ -8,7 +5,8 @@ using namespace std;
 
 int main()
 {
-    int num;
+    int num, commandNumber;
+    string commands;
     cin >> num;
 
     for (int i = 0; i < num; i++)
@@ -20,9 +18,8 @@ int main()
         vector<int> saveCommand;
 
         for (int j = 1; j <= step; j++)
-        { // #3
-            string commands;
-            cin >> commands; // LEFT RIGHT
+        {                    // #3
+            cin >> commands; // String LEFT RIGHT
 
             if (commands == "LEFT")
             {
@@ -36,9 +33,11 @@ int main()
             }
             else if (commands == "SAME")
             {
+                cin >> commands;      // Take AS
+                cin >> commandNumber; //Take Number
 
-                // Need to get last number
-                // Find position += last number
+                saveCommand.push_back(saveCommand[commandNumber - 1]);
+                position += saveCommand[commandNumber - 1];
             }
         }
         cout << position << endl;
