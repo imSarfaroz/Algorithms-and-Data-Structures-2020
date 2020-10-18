@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// definition
 string join(const vector<string> &v)
 {
     string r;
