@@ -4,10 +4,11 @@ using namespace std;
 
 int main()
 {
-    string a;
-    cin >> a;
+    string score;
+    cin >> score;
 
-    for (int i = 0; i < a.size(); i++)
-    {
-    }
+    int length;
+    length = score.length() - 2;
+
+    cout << score.at(length); // AT 14 -> A
 }
