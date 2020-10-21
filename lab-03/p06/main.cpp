@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     int courses, categories;
-    bool willGraduate = true;
+
 
     while (cin >> courses && courses > 0)
     {
@@ -23,6 +23,7 @@ int main()
             allCourses.push_back(course);
         }
 
+        bool willGraduate = true;
         for (int i = 0; i < categories; i++)
         {
             int numOfCourses, minNumOfCourses;
@@ -32,21 +33,16 @@ int main()
             {
                 string course;
                 cin >> course;
-                if (find(allCourses.begin(), allCourses.end(), course) != allCourses.end())
-                    --minNumOfCourses;
-                {
-                    if (minNumOfCourses > 0)
-                        willGraduate = false;
+                if (find(allCourses.begin(), allCourses.end(), course) != allCourses.end()){
+                    minNumOfCourses--;
                 }
             }
+            if (minNumOfCourses > 0)
+                willGraduate = false;
         }
-        if (willGraduate)
-        {
-            cout << "yes" << endl;
-        }
-        else
-        {
-            cout << "no" << endl;
-        }
+
+        cout << (willGraduate ? "yes" : "no") << endl;
+
+        allCourses.clear();
     }
 }
