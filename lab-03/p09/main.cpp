@@ -9,7 +9,7 @@ int main()
 {
     int numDevice, numOper, capacity, device, maxCapacity, sumCapacity;
 
-    nt a = 100;
+    int a = 100;
     vector<int> cap(a);
 
     bool on[100];
