@@ -5,8 +5,8 @@ using namespace std;
 
 int main()
 {
-    std::string name;
-    std::getline(std::cin, name);
+    string name;
+    getline(cin, name);
 
-        std::cout << "Thank you, " << name << ", and farewell";
+    cout << "Thank you, " << name << ", and farewell";
 }
