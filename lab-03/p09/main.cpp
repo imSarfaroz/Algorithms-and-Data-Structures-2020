@@ -8,8 +8,10 @@ using namespace std;
 int main()
 {
     int numDevice, numOper, capacity, device, maxCapacity, sumCapacity;
-    //vector<int> cap(100);
-    int cap[100];
+
+    nt a = 100;
+    vector<int> cap(a);
+
     bool on[100];
     bool isSafe;
     int count = 1;
@@ -22,8 +24,7 @@ int main()
         }
 
         for (int i = 1; i <= numDevice; i++)
-        {   // 2
-            // cap.push_back(i);
+        { // 2
             cin >> cap[i];
             on[i] = false;
         }

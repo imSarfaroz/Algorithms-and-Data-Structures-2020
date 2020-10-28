@@ -30,6 +30,13 @@ int main()
             curNumber = curNumber % 100;
         }
 
+        if (curNumber / 90)
+        {
+            Roman[i][4]++;
+            Roman[i][2]++;
+            curNumber = curNumber % 90;
+        }
+
         if (curNumber / 50)
         {
             Roman[i][3]++;
@@ -43,12 +50,6 @@ int main()
             curNumber = curNumber % 40;
         }
 
-        if (curNumber / 90)
-        {
-            Roman[i][4]++;
-            Roman[i][2]++;
-            curNumber = curNumber % 90;
-        }
 
         if (curNumber / 10)
         {
@@ -80,12 +81,11 @@ int main()
         {
             Roman[i][0] = (curNumber / 1) + Roman[i][0];
         }
-
-        while((cin >> number) && number != 0)
-        {
-            cout << number << ": " << Roman[number][0] << "i " << Roman[number][1] << "v " << Roman[number][2]
-                 << "x " << Roman[number][3] << "l " << Roman[number][4] << "c"
-                 << "\n";
-        }
+    }
+     while ((cin >> number) && number)
+    {
+        cout << number << ": " << Roman[number][0] << " i, " << Roman[number][1] << " v, " << Roman[number][2]
+             << " x, " << Roman[number][3] << " l, " << Roman[number][4] << " c"
+             << "\n";
     }
 }
