@@ -4,10 +4,15 @@
 
 using namespace std;
 
+
 int main()
 {
     int number;
-    vector<vector<int>> Roman;
+    int a = 101;
+    int b = 5;
+
+    vector<vector<int>> Roman(a, vector<int> (b));
+    
 
     for (int i = 1; i < 101; i++)
     {
@@ -19,7 +24,7 @@ int main()
         Roman[i][1] = Roman[i - 1][1];
         Roman[i][0] = Roman[i - 1][0];
 
-        if (curNumber / 100)
+        if(curNumber / 100)
         {
             Roman[i][4]++;
             curNumber = curNumber % 100;
@@ -76,8 +81,11 @@ int main()
             Roman[i][0] = (curNumber / 1) + Roman[i][0];
         }
 
-        while ((cin >> number) && number != 0)
+        while((cin >> number) && number != 0)
         {
+            cout << number << ": " << Roman[number][0] << "i " << Roman[number][1] << "v " << Roman[number][2]
+                 << "x " << Roman[number][3] << "l " << Roman[number][4] << "c"
+                 << "\n";
         }
     }
 }
