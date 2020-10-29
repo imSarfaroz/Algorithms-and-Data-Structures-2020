@@ -9,7 +9,7 @@ int main()
 
     for (int i = 1; i <= c; i++)
     {
-        if (i % a == 0 & i % b == 0)
+        if (i % a == 0 && i % b == 0)
         {
             cout << "FizzBuzz\n";
         }
@@ -19,7 +19,7 @@ int main()
         }
         else if (i % b == 0)
         {
-            cout << " Buzz\n";
+            cout << "Buzz\n";
         }
         else
         {
