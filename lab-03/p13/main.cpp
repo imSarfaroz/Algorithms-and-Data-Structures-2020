@@ -3,22 +3,24 @@
 
 using namespace std;
 
+bool between(int first, int last, int v);
+
 int main()
 {
     int pKing, pQueen;
     int pNewQueen;
 
-    while (cin >> pKing >> pQueen >> pNewQueen) // 17 17 49    17 49 56
+    while (cin >> pKing >> pQueen >> pNewQueen) // 17 17 49    17 49 56     17 49 9
     {
 
-        int xKing = pKing / 8; // 2  2
-        int yKing = pKing % 8; // 1  1
+        int xKing = pKing / 8; // 2  2   2
+        int yKing = pKing % 8; // 1  1   1
 
-        int xQueen = pQueen / 8; // 2   6
-        int yQueen = pQueen % 8; // 1   1
+        int xQueen = pQueen / 8; // 2   6    6
+        int yQueen = pQueen % 8; // 1   1    1
 
-        int xNew = pNewQueen / 8; // 6    7
-        int yNew = pNewQueen % 8; // 1    0
+        int xNew = pNewQueen / 8; // 6    7    1
+        int yNew = pNewQueen % 8; // 1    0    1
 
         if (pKing == pQueen)
         {
@@ -35,7 +37,7 @@ int main()
         else
         {
 
-            if ((xNew == xQueen && xNew == xKing) || (yNew == yQueen && yNew == yKing))
+            if ((xNew == xQueen && xNew == xKing && between(yQueen, yNew, yKing)) || (yNew == yQueen && yNew == yKing && between(xQueen, xNew, xKing)))
             {
                 cout << "Illegal move" << endl;
             }
@@ -53,4 +55,9 @@ int main()
             }
         }
     }
+}
+
+bool between(int first, int last, int v)
+{
+    return (first < last ? v >= first && v <= last : v >= last && v <= first);
 }
