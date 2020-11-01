@@ -38,5 +38,5 @@ int main()
             // 3 + 200 + 20(A) + 20(A) + 300
         }
     }
-    cout << solved << points << endl;
+    cout << solved << " " << points << endl;
 }
