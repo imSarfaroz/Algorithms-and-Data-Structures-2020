@@ -9,12 +9,11 @@ int main()
 {
     int score;
 
-    string result;
     int points = 0;
     int solved = 0;
 
-    string problem;
-    map<string, char> submissions;
+    string problem, result;
+    map<string, int> submissions;
 
     while (true)
     {
