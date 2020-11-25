@@ -23,4 +23,18 @@ int main(void)
         printf("%d ", *p);
     }
     printf("\n");
+
+    int s1 = 0;
+    for (int i = 0; i < N; i++)
+    {
+        s1 += a[i];
+    }
+    printf("Sum of all elements is %d\n", s1);
+
+    int s2 = 0;
+    for (int *p = a;   p != &a[N]; ++p)
+    {
+        s2 += *p;
+    }
+    printf("Sum of all elements is %d\n", s1);
 }
