@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define N 10
 #define M 7
@@ -16,19 +17,18 @@ void printArray(int *p, int n)
 
 int main(void)
 {
-    int a[N];
+    int n;
+    scanf("%d", &n);
 
-    for (int i = 0; i < N; i++)
+    //a - dynamic array
+    int *a = (int *)malloc(sizeof(int) * n);
+
+    for (int i = 0; i < n; i++)
     {
         scanf("%d", &a[i]);
     }
 
-    int b[M];
-    for (int i = 0; i < M; ++i)
-    {
-        scanf("%d", &b[i]);
-    }
+    printArray(a, n);
 
-    printArray(a, N);
-    printArray(b, M);
+    free(a);
 }
