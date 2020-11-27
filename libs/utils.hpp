@@ -35,3 +35,53 @@ Iter auFindIf(Iter beg, Iter end, Predicate p)
     }
     return end;
 }
+
+// template <typename Iter> 
+// Iter auMinElement(Iter beg, Iter end)
+// {
+//     if(beg == end)
+//     {
+//         return end;
+//     }
+//     Iter res = beg++;
+//     while(beg != end)
+//     {
+//         if(*beg < *res)
+//         {
+//             res = beg;
+//         }
+//         beg++;
+//     }
+//     return res;
+// }
+
+template <typename Iter, typename Predicate>
+Iter auMinElement(Iter beg, Iter end, Predicate p)
+{
+    if (beg == end)
+    {
+        return end;
+    }
+    Iter res = beg++;
+    while (beg != end)
+    {
+        if (p(*beg, *res))
+        {
+            res = beg;
+        }
+        beg++;
+    }
+    return res;
+}
+
+template<typename Iter, typename Predicate>
+void auSelectSort(Iter beg, Iter end, Predicate p)
+{
+    while (beg != end)
+    {
+        Iter iterToMin = auMinElement(beg, end, p);
+        auSwap(*beg, *iterToMin);
+        ++beg;
+    }
+
+}

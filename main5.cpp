@@ -117,9 +117,24 @@ int main()
     //     cout << "even numbers not found" << endl;
     // }
 
-    vector<Student> students = {{"StudentD", 2.7}, {"StudentA", 4.0}, {"StudentX", 3.2}};
+    // vector<int> v = {3, 1, 2, 3, -2, 10};
+    // auto p = auMinElement(begin(v), end(v));
 
-    // sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mName < s2.mName; });
+    // if(p != end(v))
+    // {
+    //     cout << "Min value: " << *p << endl;
+    // }
+    // else
+    // {
+    //     cout << "not found" << endl;
+    // }
+    
+     vector<Student> students = {{"StudentD", 2.7}, {"StudentA", 4.0}, {"StudentX", 3.2}};
+    // auto IterToMin = auMinElement(begin(students), end(students), [](const Student &s1, const Student &s2) {
+    //     return s1.mGpa < s2.mGpa;
+    // });
+
+    // cout << IterToMin -> mGpa << " " << IterToMin -> mName << endl; 
 
     // for(const auto &s: students)
     // {
@@ -128,10 +143,10 @@ int main()
 
     // cout << "---" << endl;
 
-    // sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
+    auSelectSort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
 
-    // for (const auto &s : students)
-    // {
-    //     cout << s.mName << " " << s.mGpa << endl;
-    // }
+    for (const auto &s : students)
+    {
+        cout << s.mName << " " << s.mGpa << endl;
+    }
 }
