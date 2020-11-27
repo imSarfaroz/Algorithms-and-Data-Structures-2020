@@ -4,31 +4,34 @@
 #include <list>
 #include <vector>
 
+#include "libs/utils.hpp"
+
 using namespace std;
 
-// struct IsEven
-// {
-//     //call operator
-//     bool operator()(int n) const
-//     {
-//         return n % 2 == 0;
-//     }
-// };
+// functor
+struct IsEven
+{
+    //call operator
+    bool operator()(int n) const
+    {
+        return n % 2 == 0;
+    }
+};
 
-// struct GreaterThan
-// {
-//     int mX;
+struct GreaterThan
+{
+    int mX;
 
-//     GreaterThan(int x)
-//     : mX(x)
-//     {
-//     }
+    GreaterThan(int x)
+        : mX(x)
+    {
+    }
 
-//     bool operator()(int n) const
-//     {
-//         return n > mX;
-//     }
-// };
+    bool operator()(int n) const
+    {
+        return n > mX;
+    }
+};
 
 struct Student
 {
@@ -37,15 +40,28 @@ struct Student
 
     Student(const string &name, double gpa)
         : mName(name), mGpa(gpa)
-        {
-        }
+    {
+    }
 };
 
 int main()
 {
-    // int a[] = {3, 1, 20, 4, 7, 3, 2};
+    // int a[] = {3, 1, 20, 4, 7, 3, 5};
 
-    // auto p = find(&a[0], end(a), 0);
+    // auto p = auFind(begin(a), end(a), 20);
+
+    // if (p != end(a))
+    // {
+    //     cout << "The index of " << *p << " is " << p - begin(a) << endl;
+    // }
+    // else
+    // {
+    //     cout << "not found" << endl;
+    // }
+
+    // vector<int> a  = {3, 1, 20, 4, 7, 8, 5};
+
+    // vector<int>::iterator p = auFind(begin(a), end(a), 1);
 
     // if(p != end(a))
     // {
@@ -58,20 +74,7 @@ int main()
 
     // vector<int> a = {3, 1, 20, 4, 7, 8, 5};
 
-    // vector<int>::iterator p = find(begin(a), end(a), 1000);
-
-    // if(p != end(a))
-    // {
-    //     cout << "The index of " << *p << " is " << p - begin(a) << endl;
-    // }
-    // else
-    // {
-    //     cout << "not found" << endl;
-    // }
-
-      // vector<int> a = {3, 1, 20, 4, 7, 8, 5};
-
-    // auto it = find(begin(a), end(a), IsEven());
+    // auto it = auFindIf(begin(a), end(a), IsEven());
 
     // if (it != end(a))
     // {
@@ -87,7 +90,7 @@ int main()
 
     // vector<int> a = {3, 1, 20, 4, 7, 8, 5};
 
-    // auto it = find_if(begin(a), end(a), GreaterThan(x)); 
+    // auto it = find_if(begin(a), end(a), GreaterThan(x));
 
     // if (it != end(a))
     // {
@@ -116,19 +119,19 @@ int main()
 
     vector<Student> students = {{"StudentD", 2.7}, {"StudentA", 4.0}, {"StudentX", 3.2}};
 
-    sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mName < s2.mName; });
+    // sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mName < s2.mName; });
 
-    for(const auto &s: students)
-    {
-        cout << s.mName << " " << s.mGpa << endl;
-    }
+    // for(const auto &s: students)
+    // {
+    //     cout << s.mName << " " << s.mGpa << endl;
+    // }
 
-    cout << "---" << endl;
+    // cout << "---" << endl;
 
-    sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
+    // sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
 
-    for (const auto &s : students)
-    {
-        cout << s.mName << " " << s.mGpa << endl;
-    }
+    // for (const auto &s : students)
+    // {
+    //     cout << s.mName << " " << s.mGpa << endl;
+    // }
 }
