@@ -5,7 +5,6 @@
 
 void printArray(int *p, int n)
 {
-    int *q = p + n;
     for (int *q = p + n; p < q; ++p)
     {
         // printf("%d", *(p + i))
