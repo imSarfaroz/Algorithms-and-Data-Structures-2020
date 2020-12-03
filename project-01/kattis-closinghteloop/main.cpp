@@ -37,16 +37,26 @@ int main()
         sort(red.rbegin(), red.rend());
         sort(blue.rbegin(), blue.rend());
 
-        int sum = 0;
-        int sum2 = 0;
+
         int total = 0;
 
-        sum = accumulate(red.begin(), red.end(), 0);
-        sum2 = accumulate(blue.begin(), blue.end(), 0);
+        for (int j = 0; j < min(red.size(), blue.size()); j++)
+        {
+            // total = accumulate(red.begin(), red.end(), 0) + accumulate(blue.begin(), blue.end(), 0);
+            // total -= 1;
 
-        total = sum + sum2;
+            // if(j != 0)
+            // {
+            //     total -= 1;
+            // }
 
-        cout << "Case #" << i << ": ";
-        cout << (total - 1 >= 0 ? total - 1 : 0) << endl;
-    }
+            total += red[j] + blue[j] - 1;
+            if (j != 0)
+            {
+                total -= 1;
+            }
+        }
+            cout << "Case #" << i << ": ";
+            cout << (total - 1 >= 0 ? total - 1 : 0) << endl;
+        }
 }
