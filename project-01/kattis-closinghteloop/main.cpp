@@ -1,5 +1,8 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
+#include <numeric>
+#include <string>
 
 using namespace std;
 
@@ -8,7 +11,7 @@ int main()
     int numOfCases;
     cin >> numOfCases;
 
-    for (int i = 0; i < numOfCases; i++)
+    for (int i = 1; i <= numOfCases; i++)
     {
 
         int segments;
@@ -19,7 +22,7 @@ int main()
         while (segments--)
         {
             int num;
-            int color;
+            char color;
             cin >> num >> color;
 
             if (color == 'R')
@@ -34,9 +37,16 @@ int main()
         sort(red.rbegin(), red.rend());
         sort(blue.rbegin(), blue.rend());
 
-        for (int j = 0; j < red.size; j++)
-        {
-            //calculations
-        }
+        int sum = 0;
+        int sum2 = 0;
+        int total = 0;
+
+        sum = accumulate(red.begin(), red.end(), 0);
+        sum2 = accumulate(blue.begin(), blue.end(), 0);
+
+        total = sum + sum2;
+
+        cout << "Case #" << i << ": ";
+        cout << (total - 1 >= 0 ? total - 1 : 0) << endl;
     }
 }
