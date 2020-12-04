@@ -85,3 +85,21 @@ void auSelectSort(Iter beg, Iter end, Predicate p)
     }
 
 }
+
+template<typename Iter, typename T>
+Iter auLowerBound(Iter beg, Iter end, const T &k)
+{
+    while(beg != end)
+    {
+        auto mid = beg + (end - beg) / 2;
+        if(*mid < k)
+        {
+            beg = ++mid;
+        }
+        else
+        {
+            end = mid;
+        }
+    }
+    return beg;
+}

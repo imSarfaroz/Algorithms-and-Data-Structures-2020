@@ -260,9 +260,48 @@ void example13()
 
 void example14()
 {
+    vector<int> v = {0, 4, 5, 6, 7, 3, 5, 6, 7, 20, 40};
+
+    for (int x; cin >> x;)
+    {
+        cout << (binary_search(begin(v), end(v), x) ? "Yes" : "No") << endl;
+    }
+}
+
+void example15()
+{
+    vector<int> v = {0, 4, 5, 6, 7, 3, 5, 6, 7, 20, 40};
+
+    for (int x; cin >> x;)
+    {
+        auto p = auLowerBound(begin(v), end(v), x);
+        if (p == end(v))
+        {
+            cout << "No elements equal or greated than " << x << endl;
+        }
+        else if (*p == x)
+        {
+            cout << "index of element equal to " << x << " is " << p - begin(v) << endl;
+        }
+        else
+        {
+            cout << "index of element greater than" << x << " is " << p - begin(v) << endl;
+        }
+    }
+}
+
+void example16()
+{
+    vector<int> v = {0, 4, 5, 10, 10, 10, 25, 25, 25, 20, 40};
+
+    for (int x; cin >> x;)
+    {
+        auto p = equal_range(begin(v), end(v), x);
+        cout << "Number of elements equal to " << x << " is " << p.second - p.first << endl;
+    }
 }
 
 int main()
 {
-    example14();
+    example15();
 }
