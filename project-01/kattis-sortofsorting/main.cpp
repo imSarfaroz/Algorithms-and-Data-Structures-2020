@@ -36,5 +36,7 @@ int main()
         {
             cout << a << endl;
         }
+
+        names.clear();
     }
 }
