@@ -62,11 +62,11 @@ void example01()
 
 void example02()
 {
-    vector<int> a  = {3, 1, 20, 4, 7, 8, 5};
+    vector<int> a = {3, 1, 20, 4, 7, 8, 5};
 
     vector<int>::iterator p = auFind(begin(a), end(a), 1);
 
-    if(p != end(a))
+    if (p != end(a))
     {
         cout << "The index of " << *p << " is " << p - begin(a) << endl;
     }
@@ -117,7 +117,7 @@ void example05()
 
     vector<int> a = {3, 1, 20, 4, 7, 8, 5};
 
-    auto it = find_if(begin(a), end(a), [x](int n) { return n > x;});
+    auto it = find_if(begin(a), end(a), [x](int n) { return n > x; });
 
     if (it != end(a))
     {
@@ -134,7 +134,7 @@ void example07()
     vector<int> v = {3, 1, 2, 3, -2, 10};
     auto p = min_element(begin(v), end(v));
 
-    if(p != end(v))
+    if (p != end(v))
     {
         cout << "Min value: " << *p << endl;
     }
@@ -151,7 +151,7 @@ void example08()
         return s1.mGpa < s2.mGpa;
     });
 
-    cout << IterToMin -> mGpa << " " << IterToMin -> mName << endl;
+    cout << IterToMin->mGpa << " " << IterToMin->mName << endl;
 }
 
 void example09()
@@ -212,13 +212,57 @@ void example11()
 
     stable_sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
 
-    for(const auto &s : students)
+    for (const auto &s : students)
     {
         cout << s.mName << " " << s.mGpa << endl;
     }
-    }
+}
 
-    int main()
+void example12()
+{
+    vector<pair<string, double>> students;
+
+    string name;
+    double gpa;
+    while (cin >> name >> gpa)
     {
-        example11();
+        students.emplace_back(make_pair(name, gpa));
     }
+    sort(begin(students), end(students));
+
+    for (const auto &p : students)
+    {
+        //cout << get<0>(p) << " " << get<1>(p) << endl;
+        cout << p.first << " " << p.second << endl;
+    }
+}
+
+void example13()
+{
+    vector<tuple<string, int, double>> employees;
+
+    string name;
+    int year;
+    double salary;
+
+    while (cin >> name >> year >> salary)
+    {
+        employees.emplace_back(name, year, salary);
+    }
+    sort(begin(employees), end(employees), [](const auto t1, const auto t2) { return get<1>(t1) < get<1>(t2); });
+
+    for (const auto &e : employees)
+    {
+        cout << get<0>(e) << " " << get<1>(e) << " " << get<2>(e) << endl;
+        //cout << p.first << " " << p.second << endl;
+    }
+}
+
+void example14()
+{
+}
+
+int main()
+{
+    example14();
+}
