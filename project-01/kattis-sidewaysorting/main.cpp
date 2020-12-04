@@ -24,6 +24,26 @@ int main()
             }
         }
 
-        stable_sort(v.begin(), v.end(), ?)
+        stable_sort(v.begin(), v.end(), [](string i, string j) {
+            for (auto &c : i)
+            {
+                c = tolower(c);
+            }
+            for (auto &c : j)
+            {
+                c = tolower(c);
+            }
+
+            return i < j;
+        });
+
+        for (int i = 0; i < lines; i++)
+        {
+            for (int j = 0; j < ch; j++)
+            {
+                cout << v[j][i];
+            }
+            cout << endl;
+        }
     }
 }
