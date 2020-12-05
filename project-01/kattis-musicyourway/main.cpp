@@ -7,12 +7,27 @@ using namespace std;
 int main()
 {
     string atributes;
+    int index = 0;
     getline(cin, atributes);
+
+    vector<string> vec;
+    vec.push_back("");
+    for (auto i : atributes)
+    {
+        if (i == ' ')
+        {
+            vec.push_back("");
+        }
+        else
+        {
+            vec.back().push_back(i);
+        }
+    }
 
     //taking songs
     int numOfSongs;
     cin >> numOfSongs;
-    vector<vector<string>> v;
+    vector<vector<string>> itunes;
     for (int i = 0; i < numOfSongs; i++)
     {
         vector<string> song;
@@ -22,7 +37,7 @@ int main()
             cin >> s;
             song.push_back(s);
         }
-        v.push_back(song);
+        itunes.push_back(song);
     }
 
     //sorting the songs
@@ -39,6 +54,15 @@ int main()
         cin >> nAttribute;
 
         // sort
-        //stable_sort();
+        for (int i = 0; i < num; i++)
+        {
+            if (vec[i] == nAttribute)
+            {
+                index = i;
+            }
+        }
+        stable_sort(itunes.begin(), itunes.end(), [index](vector<string> a, vector<string> b) {
+            return a[index] < b[index];
+        });
     }
 }
