@@ -20,12 +20,12 @@ int main()
     int nTest;
     cin >> nTest;
 
-    for (int caseN = 0; caseN < nTest; caseN++)
+    for (int caseN = 1; caseN <= nTest; caseN++)
     {
         int R, C, M, N;
         cin >> R >> C >> M >> N;
 
-        vector<Freq> vec;   
+        vector<Freq> vec;
         vector<int> counter(100, 0); //  filling the counter vector with the number frequencies
 
         for (int j = 0; j < R; j++)
@@ -41,7 +41,7 @@ int main()
         //filling the vector
         for (int i = 0; i < counter.size(); i++)
         {
-            if(counter[i] != 0)
+            if (counter[i] != 0)
             {
                 vec.push_back(Freq(i, counter[i]));
             }
@@ -54,7 +54,18 @@ int main()
         int maxN = vec[0].count;
 
         int result = M * maxN;
-        
+
+        for (int i = 1; i < vec.size(); i++)
+        {
+            if (vec[i].count == maxN)
+            {
+                result += M * maxN;
+            }
+            else
+            {
+                result += N * vec[i].count;
+            }
+        }
         cout << "Case " << caseN << ": " << result << endl;
-          }
+    }
 }
