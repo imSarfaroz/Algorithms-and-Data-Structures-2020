@@ -1,10 +1,17 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 using namespace std;
-struct specialString;
 int measure(string str);
+
+//Struct
+struct specialString
+{
+    string s;
+    int msr;
+};
 
 int main()
 {
@@ -22,21 +29,23 @@ int main()
         //measurement
         for (int i = 0; i < numOfElements; i++)
         {
-            cin >> vec[i].a;
-            vec[i].m = measure(vec[i].a);
+            cin >> vec[i].s;
+            vec[i].msr = measure(vec[i].s);
         }
 
         // stableSort (if elements are equal, remains orders)
-        stable_sort(vec.begin(), vec.end(), //lumbda stringsoecial)
+        stable_sort(vec.begin(), vec.end(), [](specialString x, specialString y) {
+            return x.msr < y.msr;
+        });
+
+        //printing
+        for (int i = 0; i < numOfElements; i++)
+        {
+            cout << vec[i].s << endl;
+        }
     }
 }
 
-//Struct
-struct specialString
-{
-    string a;
-    int m;
-};
 
 int measure(string str)
 {
