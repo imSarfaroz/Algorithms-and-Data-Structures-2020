@@ -23,6 +23,7 @@ int main()
         int lengthLine;
         int numOfElements;
         cin >> lengthLine >> numOfElements;
+        bool isBlank = false;
 
         vector<specialString> vec(numOfElements);
 
@@ -37,6 +38,12 @@ int main()
         stable_sort(vec.begin(), vec.end(), [](specialString x, specialString y) {
             return x.msr < y.msr;
         });
+
+        if (isBlank)
+        {
+            cout << endl;
+        }
+        isBlank = true;
 
         //printing
         for (int i = 0; i < numOfElements; i++)
