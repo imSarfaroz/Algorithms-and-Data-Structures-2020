@@ -43,9 +43,20 @@ int main()
         {
             vec.push_back(Pair(i, counter[i]));
         }
-    }
 
     sort(vec.begin(), vec.end(), [](Pair a, Pair b) {
+        if (a.value == b.value) // if numbers are equal -> sorting by ASCII
+        {
+            return a.ascii > b.ascii;
+        }
+        return a.value < b.value;
+    });
 
-    })
+    //print the results
+
+    for(auto i : vec)
+    {
+        cout << i.ascii << " " << i.value << endl;
+    }
+    }
 }
