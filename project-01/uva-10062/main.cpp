@@ -20,7 +20,7 @@ int main()
 {
     int numOfTest;
 
-    for (string str; cin >> str;)
+    for (string str; getline(cin, str);)
     {
         if (numOfTest != 0)
         {
@@ -41,22 +41,25 @@ int main()
         //filling the Pair vector
         for (int i = 0; i < counter.size(); i++)
         {
-            vec.push_back(Pair(i, counter[i]));
+            if (counter[i] != 0)
+            {
+                vec.push_back(Pair(i, counter[i]));
+            }
         }
 
-    sort(vec.begin(), vec.end(), [](Pair a, Pair b) {
-        if (a.value == b.value) // if numbers are equal -> sorting by ASCII
+        sort(vec.begin(), vec.end(), [](Pair a, Pair b) {
+            if (a.value == b.value) // if numbers are equal -> sorting by ASCII
+            {
+                return a.ascii > b.ascii;
+            }
+            return a.value < b.value;
+        });
+
+        //print the results
+
+        for (auto i : vec)
         {
-            return a.ascii > b.ascii;
+            cout << i.ascii << " " << i.value << endl;
         }
-        return a.value < b.value;
-    });
-
-    //print the results
-
-    for(auto i : vec)
-    {
-        cout << i.ascii << " " << i.value << endl;
-    }
     }
 }
