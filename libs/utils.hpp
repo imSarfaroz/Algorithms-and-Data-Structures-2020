@@ -1,4 +1,5 @@
 #pragma once
+#include <utility>
 
 template <typename T>
 void auSwap(T &a, T &b)
@@ -102,4 +103,24 @@ Iter auLowerBound(Iter beg, Iter end, const T &k)
         }
     }
     return beg;
+}
+
+template<typename Iter>
+void auReverse(Iter *beg, Iter *end)
+{
+    for (;;)
+    {
+        if (beg == end)
+            break;
+
+        --end;
+
+        if (beg == end)
+        {
+            break;
+        }
+
+        auSwap(*beg, *end);
+        ++beg;
+    }
 }
