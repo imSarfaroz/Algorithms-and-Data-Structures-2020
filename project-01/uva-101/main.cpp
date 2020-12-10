@@ -1,9 +1,6 @@
 #include <iostream>
 #include <vector>
 
-template <typename C>
-int sz(const C &c) { return c.size() }
-
 using namespace std;
 
 class BlockWorld
@@ -13,9 +10,9 @@ class BlockWorld
 
     void findBlock(int a, int &x, int &y)
     {
-        for (int i = 0; i < sz(mData); i++)
+        for (int i = 0; i < int(mData.size()); i++)
         {
-            for (int j = 0; j < sz(mData[i]); ++j)
+            for (int j = 0; j < int(mData[i].size()); ++j)
             {
                 if (mData[i][j] == a)
                 {
@@ -75,14 +72,14 @@ public:
     }
 };
 
-ostream &operator<<(ostream &out, BlockWorld &world)
+ostream &operator<<(ostream &out,const BlockWorld &world)
 {
-    for (int i = 0; i < sz(world.mData); ++i)
+    for (int i = 0; i < int(world.mData.size()); ++i)
     {
         out << i << ": ";
-        for (auto e : world.mData[i])
+        for (int j = 0; j < int(world.mData[i].size()); j++)
         {
-            out << " " << e;
+            out << " " << world.mData[i][j];
         }
         out << "\n";
     }
