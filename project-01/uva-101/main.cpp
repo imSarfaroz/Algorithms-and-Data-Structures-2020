@@ -106,7 +106,50 @@ public:
         mData[xB].push_back(a);
         mData[xA].pop_back();
     }
+
+    void pileOnto(int a, int b)
+    {
+        int xA;
+        int yA;
+
+        findBlock(a, xA, yA);
+
+        int xB;
+        int yB;
+
+        findBlock(b, xB, yB);
+
+        if (xA == xB)
+        {
+            return;
+        }
+
+        putBack(xB, b);
+        pileBlocks(xB, xA, yA);
+    }
+
+    void pileOver(int a, int b)
+    {
+        int xA;
+        int yA;
+
+        findBlock(a, xA, yA);
+
+        int xB;
+        int yB;
+
+        findBlock(b, xB, yB);
+
+        if (xA == xB)
+        {
+            return;
+        }
+
+        pileBlocks(xB, xA, yA);
+    }
 };
+}
+;
 
 ostream &operator<<(ostream &out, const BlockWorld &world)
 {
