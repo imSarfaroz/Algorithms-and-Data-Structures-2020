@@ -33,6 +33,19 @@ class BlockWorld
         }
     }
 
+    void pileBlocks(int d, int x, int y)
+    {
+        int c = 0;
+        for (int i = y; i < int(mData[x].size()); i++, c++)
+        {
+            mData[d].push_back(mData[x][i]);
+        }
+        for (int i = 0; i < c; i++)
+        {
+            mData[x].pop_back();
+        }
+    }
+
 public:
     BlockWorld(int n)
         : mData(n) // initialization
@@ -70,9 +83,32 @@ public:
         mData[xB].push_back(a);
         mData[xA].push_back(b);
     }
+
+    void moveOver(int a, int b)
+    {
+        int yA;
+        int xA;
+
+        findBlock(a, xA, yA);
+
+        int xB;
+        int yB;
+
+        findBlock(a, xB, yB);
+
+        if (xA == xB)
+        {
+            return;
+        }
+
+        putBack(xA, a);
+
+        mData[xB].push_back(a);
+        mData[xA].pop_back();
+    }
 };
 
-ostream &operator<<(ostream &out,const BlockWorld &world)
+ostream &operator<<(ostream &out, const BlockWorld &world)
 {
     for (int i = 0; i < int(world.mData.size()); ++i)
     {
