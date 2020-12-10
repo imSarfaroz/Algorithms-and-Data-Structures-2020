@@ -148,8 +148,6 @@ public:
         pileBlocks(xB, xA, yA);
     }
 };
-}
-;
 
 ostream &operator<<(ostream &out, const BlockWorld &world)
 {
@@ -171,7 +169,6 @@ int main()
     cin >> n;
 
     BlockWorld world(n);
-
     for (;;)
     {
         string cmd;
@@ -187,9 +184,28 @@ int main()
         int b;
         cin >> b;
 
-        if (cmd == "move" && p == "onto")
+        if (cmd == "move" )
         {
+            if(p == "onto")
+            {
             world.moveOnto(a, b);
+            }
+            else
+            {
+                world.moveOver(a, b);
+            }
+        }
+        else if(cmd == "pile")
+        {
+            if(p == "onto")
+            {
+                world.pileOnto(a, b);
+            }
+            else
+            {
+                world.pileOver(a, b);
+            }
+
         }
     }
 
