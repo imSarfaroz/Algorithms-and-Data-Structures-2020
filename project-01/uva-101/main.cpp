@@ -16,8 +16,8 @@ class BlockWorld
             {
                 if (mData[i][j] == a)
                 {
-                    x == i;
-                    y == j;
+                    x = i;
+                    y = j;
                     return;
                 }
             }
@@ -26,7 +26,7 @@ class BlockWorld
 
     void putBack(int x, int a)
     {
-        while (!mData[x].empty() && mData[x].back() != a)
+        while (!mData.empty() && mData[x].back() != a)
         {
             mData[mData[x].back()].push_back(mData[x].back());
             mData[x].pop_back();
@@ -58,10 +58,6 @@ public:
 
     void moveOnto(int a, int b)
     {
-        if (a == b)
-        {
-            return;
-        }
         int xA;
         int yA;
 
@@ -81,7 +77,7 @@ public:
         putBack(xB, b);
 
         mData[xB].push_back(a);
-        mData[xA].push_back(b);
+        mData[xA].pop_back();
     }
 
     void moveOver(int a, int b)
@@ -94,7 +90,7 @@ public:
         int xB;
         int yB;
 
-        findBlock(a, xB, yB);
+        findBlock(b, xB, yB);
 
         if (xA == xB)
         {
@@ -153,7 +149,7 @@ ostream &operator<<(ostream &out, const BlockWorld &world)
 {
     for (int i = 0; i < int(world.mData.size()); ++i)
     {
-        out << i << ": ";
+        out << i << ":";
         for (int j = 0; j < int(world.mData[i].size()); j++)
         {
             out << " " << world.mData[i][j];
@@ -169,13 +165,16 @@ int main()
     cin >> n;
 
     BlockWorld world(n);
+
     for (;;)
     {
         string cmd;
         cin >> cmd;
 
         if (cmd == "quit")
+        {
             break;
+        }
 
         int a;
         cin >> a;
@@ -184,7 +183,7 @@ int main()
         int b;
         cin >> b;
 
-        if (cmd == "move" )
+        if (cmd == "move" && a != b)
         {
             if(p == "onto")
             {
@@ -195,7 +194,7 @@ int main()
                 world.moveOver(a, b);
             }
         }
-        else if(cmd == "pile")
+        else if(cmd == "pile" && a != b)
         {
             if(p == "onto")
             {
