@@ -19,6 +19,23 @@ vecInt::vecInt(const vecInt &other)
     }
 }
 
+vecInt &vecInt::operator=(const vecInt &other)
+{
+    if (this != &other)
+    {
+        int *newP = new int[other.sz];
+        for (size_t i = 0; i < other.sz; i++)
+        {
+            newP[i] = other.p[i];
+        }
+        delete[] p;
+        p = newP;
+        sz = other.sz;
+        cp = other.sz;
+    }
+    return *this;
+}
+
 vecInt::~vecInt()
 {
     std::cout << "~vecInt()" << std::endl;

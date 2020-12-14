@@ -19,6 +19,9 @@ public:
     //copy constructor
     vecInt(const vecInt &other);
 
+    //assignment operator
+    vecInt &operator=(const vecInt &other);
+
     ~vecInt();
 
     int *begin() const

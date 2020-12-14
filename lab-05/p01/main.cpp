@@ -67,7 +67,16 @@ void problem0201()
         v.pushBack(x);
     }
 
-    vecInt w = v;
+    vecInt w;
+    w.pushBack(-1);
+    w.pushBack(-2);
+    w.pushBack(-3);
+
+    w = v;
+
+    // vecInt w;
+    // w = v;
+
     auReverse(w.begin(), w.end());
 
     cout << (v == w ? "It is a polindrome" : "It is not a polindrome") << endl;
