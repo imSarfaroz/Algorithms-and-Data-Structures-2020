@@ -1,12 +1,11 @@
 #include "../../libs/utils.hpp"
 #include <iostream>
 #include "VecInt.hpp"
- 
+
 using namespace std;
 
-
-void problem04()
-{   
+void problem0101()
+{
     int n;
     cin >> n;
 
@@ -34,33 +33,46 @@ void problem04()
     cout << endl;
 }
 
-    void problem05()
+void problem0102()
+{
+    vecInt v;
+
+    for (int x; cin >> x;)
     {
-        vecInt v;
+        v.pushBack(x);
+    }
 
-        for (int x; cin >> x;)
-        {
-            v.pushBack(x);
-        }
+    for (int e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
 
-        for (int e : v)
-        {
-            cout << e << " ";
-        }
-        cout << endl;
+    auReverse(v.begin(), v.end());
 
-        auReverse(v.begin(), v.end());
+    for (int e : v)
+    {
+        cout << e << " ";
+    }
+    cout << endl;
 
-        for (int e : v)
-        {
-            cout << e << " ";
-        }
-        cout << endl;
-
-        //free(v.p);
+    //free(v.p);
 }
 
+void problem0201()
+{
+    vecInt v;
+    for (int x; cin >> x;)
+    {
+        v.pushBack(x);
+    }
+
+    vecInt w = v;
+    auReverse(w.begin(), w.end());
+
+    cout << (v == w ? "It is a polindrome" : "It is not a polindrome") << endl;
+}
 int main(void)
 {
-    problem04();
+    problem0201();
 }

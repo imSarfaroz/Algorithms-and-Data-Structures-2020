@@ -16,6 +16,9 @@ public:
 
     vecInt(std::size_t n);
 
+    //copy constructor
+    vecInt(const vecInt &other);
+
     ~vecInt();
 
     int *begin() const
@@ -45,3 +48,11 @@ public:
 
     void pushBack(int x);
 };
+
+bool operator==(const vecInt &a, const vecInt &b);
+
+
+inline bool operator!=(const vecInt &a, const vecInt &b)
+{
+    return !(a == b);
+}
