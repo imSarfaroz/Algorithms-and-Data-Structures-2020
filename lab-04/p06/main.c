@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "Vecint.h"
 
 void printArray(int *p, int n)
 {
@@ -34,45 +35,6 @@ void reverse(int *beg, int *end)
     }
 }
 
-struct vecInt
-{
-    int *p;
-    size_t sz;
-    size_t cp;
-};
-
-void vecInt_createOfSize(struct vecInt *This, int n)
-{
-    This->p = (int *)malloc(sizeof(int) * n);
-    This->sz = n;
-    This->cp = n;
-}
-
-void vecInt_createEmpty(struct vecInt *This)
-{
-    This->p = NULL;
-    This->sz = 0;
-    This->cp = 0;
-}
-
-void vecInt_pushBack(struct vecInt *This, int x)
-{
-    if (This->sz == This->cp)
-    {
-        int newCp = This->sz == 0 ? 1 : This->cp * 2;
-        int *q = (int *)malloc(sizeof(int) * newCp);
-        for (int i = 0; i < This->sz; i++)
-        {
-            q[i] = This->p[i];
-        }
-        free(This->p);
-        This->p = q;
-        This->cp = newCp;
-    }
-    This->p[This->sz] = x;
-    ++This->sz;
-}
-
 void problem04()
 {
     struct vecInt v;
@@ -80,7 +42,7 @@ void problem04()
     int n;
     scanf("%d", &n);
 
-    vecInt_createOfSize(&v, n);
+    vecInt_createOfSize(&v, n, 0);
 
     for (int i = 0; i < v.sz; ++i)
     {
@@ -115,7 +77,7 @@ void problem05()
 
     printArray(v.p, v.sz);
 
-    free(v.p);
+    Vecint_destriy(&v);
 }
 
 int main(void)
