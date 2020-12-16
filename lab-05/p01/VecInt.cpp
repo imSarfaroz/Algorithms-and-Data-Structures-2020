@@ -1,5 +1,8 @@
 #include "VecInt.hpp"
-#include "utils.hpp"
+#include "../../libs/utils.hpp"
+
+std::size_t vecInt::counter = 0;
+
 
 vecInt::vecInt(size_t n)
     : p(new int[n]), sz(n), cp(n)
@@ -20,7 +23,8 @@ vecInt::vecInt(std::initializer_list<int> init)
 vecInt::vecInt(const vecInt &other)
     : p(new int[other.sz]), sz(other.sz), cp(other.sz)
 {
-    std::copy(other.begin(), other.end(), p);
+    counter += other.size(); 
+    auCopy(other.begin(), other.end(), p);
     // for (size_t i = 0; i < sz; i++)
     // {
     //     p[i] = other.p[i];
@@ -32,6 +36,7 @@ vecInt &vecInt::operator=(const vecInt &other)
 {
     if (this != &other)
     {
+        counter += other.size();
         int *newP = new int[other.sz];
         auCopy(other.begin(), other.end(), newP);
 

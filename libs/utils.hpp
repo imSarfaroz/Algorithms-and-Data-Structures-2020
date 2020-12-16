@@ -14,8 +14,7 @@ DestIter auCopy(SourceIter beg, SourceIter end, DestIter cur)
 {
     while (beg != end)
     {
-        *cur = *beg;
-        ++cur = *beg++;
+        *cur++ = *beg++;
     }
     return cur;
 }

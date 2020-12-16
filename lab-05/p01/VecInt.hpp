@@ -26,6 +26,32 @@ public:
     //assignment operator
     vecInt &operator=(const vecInt &other);
 
+    //move constructor
+    vecInt(vecInt &&other) noexcept
+        : p(other.p), sz(other.sz), cp(other.cp)
+    {
+        other.p = nullptr;
+        other.sz = 0;
+        other.cp = 0;
+    }
+
+    //move assignment
+    vecInt &operator=(vecInt &&other) noexcept
+    {
+        if (this != &other)
+        {
+            delete[] p;
+            p = other.p;
+            sz = other.sz;
+            cp = other.cp;
+            other.p = nullptr;
+            other.sz = 0;
+            other.cp = 0;
+        }
+
+        return *this;
+    }
+
     ~vecInt();
 
     int *begin() const
@@ -54,6 +80,8 @@ public:
     }
 
     void pushBack(int x);
+
+    static std::size_t counter;
 };
 
 bool operator==(const vecInt &a, const vecInt &b);
