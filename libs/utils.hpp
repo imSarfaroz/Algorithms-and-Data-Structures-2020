@@ -9,6 +9,17 @@ void auSwap(T &a, T &b)
     b = std::move(t);
 }
 
+template <typename SourceIter, typename DestIter>
+DestIter auCopy(SourceIter beg, SourceIter end, DestIter cur)
+{
+    while (beg != end)
+    {
+        *cur = *beg;
+        ++cur = *beg++;
+    }
+    return cur;
+}
+
 template <typename Iter, typename T>
 Iter auFind(Iter beg, Iter end, const T &v)
 {
@@ -37,7 +48,7 @@ Iter auFindIf(Iter beg, Iter end, Predicate p)
     return end;
 }
 
-// template <typename Iter> 
+// template <typename Iter>
 // Iter auMinElement(Iter beg, Iter end)
 // {
 //     if(beg == end)
@@ -75,7 +86,7 @@ Iter auMinElement(Iter beg, Iter end, Predicate p)
     return res;
 }
 
-template<typename Iter, typename Predicate>
+template <typename Iter, typename Predicate>
 void auSelectSort(Iter beg, Iter end, Predicate p)
 {
     while (beg != end)
@@ -84,16 +95,15 @@ void auSelectSort(Iter beg, Iter end, Predicate p)
         auSwap(*beg, *iterToMin);
         ++beg;
     }
-
 }
 
-template<typename Iter, typename T>
+template <typename Iter, typename T>
 Iter auLowerBound(Iter beg, Iter end, const T &k)
 {
-    while(beg != end)
+    while (beg != end)
     {
         auto mid = beg + (end - beg) / 2;
-        if(*mid < k)
+        if (*mid < k)
         {
             beg = ++mid;
         }
@@ -105,7 +115,7 @@ Iter auLowerBound(Iter beg, Iter end, const T &k)
     return beg;
 }
 
-template<typename Iter>
+template <typename Iter>
 void auReverse(Iter *beg, Iter *end)
 {
     for (;;)

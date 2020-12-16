@@ -79,7 +79,27 @@ void problem0201()
     cout << (v == w ? "It is a polindrome" : "It is not a polindrome") << endl;
 }
 
+void problem0202()
+{
+    vecInt a = {1, 2, 3, 4};
+    vecInt b = {5, 6, 7, 8, 9, 10};
+
+    auSwap(a, b);
+
+    for(auto e: a)
+    {
+        cout << " " << e;
+    }
+    cout << endl;
+
+    for(auto e : b)
+    {
+        cout << " " << e;
+    }
+    cout << endl;
+}
+
 int main(void)
 {
-    problem0201();
+    problem0202();
 }

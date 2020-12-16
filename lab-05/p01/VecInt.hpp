@@ -1,6 +1,7 @@
 #pragma once
 #include <cstddef>
 #include <iostream>
+#include <initializer_list>
 
 class vecInt
 {
@@ -15,6 +16,9 @@ public:
     }
 
     vecInt(std::size_t n);
+
+    // constructor with initializer_list
+    vecInt(std::initializer_list<int> init);
 
     //copy constructor
     vecInt(const vecInt &other);
@@ -53,7 +57,6 @@ public:
 };
 
 bool operator==(const vecInt &a, const vecInt &b);
-
 
 inline bool operator!=(const vecInt &a, const vecInt &b)
 {
