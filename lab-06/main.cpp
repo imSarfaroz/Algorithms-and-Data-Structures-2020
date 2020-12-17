@@ -44,7 +44,6 @@ struct GreaterThan
     }
 };
 
-
 void problem0101() //a
 {
     int a[] = {3, 1, 20, 4, 7, 0, 5};
@@ -63,7 +62,7 @@ void problem0101() //a
 
 void problem0102()
 {
-    vector<int> a = {3, 1, 20, 4, 7, 8, 5};  // b
+    vector<int> a = {3, 1, 20, 4, 7, 8, 5}; // b
 
     vector<int>::iterator p = find(begin(a), end(a), 10);
 
@@ -314,8 +313,60 @@ void problem08()
     }
 }
 
-int main()
+void problem09()
 {
-    problem08();
+    vector<tuple<string, int, double>> employees;
+
+    string name;
+    int year;
+    double salary;
+
+    while (cin >> name >> year >> salary)
+    {
+        employees.emplace_back(name, year, salary);
+    }
+    sort(begin(employees), end(employees), [](const auto t1, const auto t2) { return get<1>(t1) < get<1>(t2); });
+
+    for (const auto &e : employees)
+    {
+        cout << get<0>(e) << " " << get<1>(e) << " " << get<2>(e) << endl;
+        //cout << p.first << " " << p.second << endl;
+    }
 }
 
+void problem10()
+{
+    vector<int> v = {0, 4, 5, 10, 12, 20, 25, 40};
+
+    for (int x; cin >> x;)
+    {
+        cout << (binary_search(begin(v), end(v), x) ? "Yes" : "No") << endl;
+    }
+}
+
+void problem11()
+{
+    vector<int> v = {0, 4, 5, 10, 12, 20, 25, 40};
+
+    for (int x; cin >> x;)
+    {
+        auto p = lower_bound(begin(v), end(v), x);
+        if (p == end(v))
+        {
+            cout << "No elements equal or greater than " << x << endl;
+        }
+        else if (*p == x)
+        {
+            cout << "index of element equal to " << x << " is " << p - begin(v) << endl;
+        }
+        else
+        {
+            cout << "index of element greater than" << x << " is " << p - begin(v) << endl;
+        }
+    }
+}
+
+int main()
+{
+    problem11();
+}
