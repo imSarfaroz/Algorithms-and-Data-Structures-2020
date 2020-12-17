@@ -366,7 +366,18 @@ void problem11()
     }
 }
 
+void problem12()
+{
+    vector<int> v = {0, 0, 4, 5, 10, 10, 10,12, 20, 25, 35, 25, 25, 40};
+
+    for (int x; cin >> x;)
+    {
+        auto p = equal_range(begin(v), end(v), x);
+        cout << "Number of elements equal to " << x << " is " << p.second - p.first << endl;
+    }
+}
+
 int main()
 {
-    problem11();
+    problem12();
 }
