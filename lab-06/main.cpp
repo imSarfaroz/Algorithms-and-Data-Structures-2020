@@ -29,6 +29,22 @@ struct IsEven
     }
 };
 
+struct GreaterThan
+{
+    int mX;
+
+    GreaterThan(int x)
+        : mX(x)
+    {
+    }
+
+    bool operator()(int n) const
+    {
+        return n > mX;
+    }
+};
+
+
 void problem0101() //a
 {
     int a[] = {3, 1, 20, 4, 7, 0, 5};
@@ -93,8 +109,45 @@ void problem0202()
     }
 }
 
+void problem0301()
+{
+    int x;
+    cin >> x;
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
+
+    auto it = find_if(begin(a), end(a), GreaterThan(x));
+
+    if (it != end(a))
+    {
+        cout << "number " << *it << " is the first number greater than " << x << endl;
+    }
+    else
+    {
+        cout << "even numbers not found" << endl;
+    }
+}
+
+void problem0302()
+{
+    int x;
+    cin >> x;
+
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
+
+    auto it = find_if(begin(a), end(a), [x](int n) { return n > x; });
+
+    if (it != end(a))
+    {
+        cout << "number " << *it << " is the first number greater than " << x << endl;
+    }
+    else
+    {
+        cout << "even numbers not found" << endl;
+    }
+}
+
 int main()
 {
-    problem0202();
+    problem0302();
 }
 
