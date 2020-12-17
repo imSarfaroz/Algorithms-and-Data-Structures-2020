@@ -19,6 +19,16 @@ struct Student
     }
 };
 
+// functor
+struct IsEven
+{
+    //call operator
+    bool operator()(int n) const
+    {
+        return n % 2 == 0;
+    }
+};
+
 void problem0101() //a
 {
     int a[] = {3, 1, 20, 4, 7, 0, 5};
@@ -51,8 +61,40 @@ void problem0102()
     }
 }
 
+void problem0201()
+{
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
+
+    auto it = find_if(begin(a), end(a), IsEven());
+
+    if (it != end(a))
+    {
+        cout << "The index of the first even number " << *it << " is " << it - begin(a) << endl;
+    }
+    else
+    {
+        cout << "even numbers not found" << endl;
+    }
+}
+
+void problem0202()
+{
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
+
+    auto it = find_if(begin(a), end(a), [](int n) { return n % 2 == 0; });
+
+    if (it != end(a))
+    {
+        cout << "The index of the first even number " << *it << " is " << it - begin(a) << endl;
+    }
+    else
+    {
+        cout << "even numbers not found" << endl;
+    }
+}
+
 int main()
 {
-    problem0102();
+    problem0202();
 }
 
