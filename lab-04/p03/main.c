@@ -8,7 +8,7 @@ void printArray(int *p, int n)
     for (int *q = p + n; p < q; ++p)
     {
         // printf("%d", *(p + i))
-        printf("%d", *p);
+        printf("%d ", *p);
     }
     printf("\n");
 }

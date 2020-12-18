@@ -77,10 +77,10 @@ void problem05()
 
     printArray(v.p, v.sz);
 
-    Vecint_destriy(&v);
+    Vecint_destroy(&v);
 }
 
 int main(void)
 {
-    problem04();
+    problem05();
 }

@@ -7,7 +7,7 @@ void vecInt_createOfSize(struct vecInt *This, int n, int initValue)
     This->sz = n;
     This->cp = n;
 
-    for (size_t i = 0; i < this->sz; ++i)
+    for (size_t i = 0; i < This->sz; ++i)
     {
         this->p[i] = initValue;
     }
