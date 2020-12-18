@@ -160,7 +160,7 @@ void problem04()
     }
 }
 
-void example08()
+void problem0501()
 {
     vector<Student> students = {{"StudentD", 2.7}, {"StudentA", 4.0}, {"StudentX", 3.2}};
     auto IterToMin = auMinElement(begin(students), end(students), [](const Student &s1, const Student &s2) {
@@ -170,27 +170,18 @@ void example08()
     cout << IterToMin->mGpa << " " << IterToMin->mName << endl;
 }
 
-void example09()
+void problem0502()
 {
     vector<Student> students = {{"StudentD", 2.7}, {"StudentA", 4.0}, {"StudentX", 3.2}};
-    sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mName < s2.mName; });
-    for (const auto &s : students)
-    {
-        cout << s.mName << " " << s.mGpa << endl;
-    }
+    auto IterToMin = auMinElement(begin(students), end(students), [](const Student &s1, const Student &s2) {
+        return s1.mName < s2.mName;
+    });
+
+    cout << IterToMin->mName << " " << IterToMin->mGpa << endl;
 }
 
-void example10()
-{
-    vector<Student> students = {{"StudentD", 2.7}, {"StudentA", 4.0}, {"StudentX", 3.2}};
-    sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
-    for (const auto &s : students)
-    {
-        cout << s.mName << " " << s.mGpa << endl;
-    }
-}
 
-void example11()
+void problem0601()
 {
     vector<Student> students = {
         {"StudentD", 3.2},
@@ -216,41 +207,48 @@ void example11()
         {"StudentE", 3.2},
         {"StudentR", 4.0}};
 
-    sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mName < s2.mName; });
+    auSelectSort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mName < s2.mName; });
 
     for (const auto &s : students)
     {
         cout << s.mName << " " << s.mGpa << endl;
     }
     cout << "----" << endl;
+}
 
-    //sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
+void problem0602()
+{
+    vector<Student> students = {
+        {"StudentD", 3.2},
+        {"StudentA", 4.0},
+        {"StudentX", 2.7},
+        {"StudentC", 2.7},
+        {"StudentR", 3.2},
+        {"StudentE", 3.2},
+        {"StudentR", 2.7},
+        {"StudentD", 4.0},
+        {"StudentA", 2.7},
+        {"StudentX", 2.7},
+        {"StudentC", 3.2},
+        {"StudentK", 4.0},
+        {"StudentE", 4.0},
+        {"StudentR", 2.7},
+        {"StudentR", 3.2},
+        {"StudentD", 2.7},
+        {"StudentA", 4.0},
+        {"StudentX", 3.2},
+        {"StudentC", 2.7},
+        {"StudentK", 4.0},
+        {"StudentE", 3.2},
+        {"StudentR", 4.0}};
 
-    stable_sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
+    auSelectSort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
 
     for (const auto &s : students)
     {
-        cout << s.mName << " " << s.mGpa << endl;
+        cout << s.mGpa << " " << s.mName << endl;
     }
-}
-
-void example12()
-{
-    vector<pair<string, double>> students;
-
-    string name;
-    double gpa;
-    while (cin >> name >> gpa)
-    {
-        students.emplace_back(make_pair(name, gpa));
-    }
-    sort(begin(students), end(students));
-
-    for (const auto &p : students)
-    {
-        //cout << get<0>(p) << " " << get<1>(p) << endl;
-        cout << p.first << " " << p.second << endl;
-    }
+    cout << "----" << endl;
 }
 
 void example13()
@@ -319,5 +317,5 @@ void example16()
 
 int main()
 {
-    problem04();
+    problem0602();
 }
