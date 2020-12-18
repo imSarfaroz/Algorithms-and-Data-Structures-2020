@@ -44,11 +44,11 @@ struct Student
     }
 };
 
-void example01()
+void problem0101()
 {
-    int a[] = {3, 1, 20, 4, 7, 3, 5};
+    int a[] = {3, 1, 20, 4, 7, 0, 5};
 
-    auto p = auFind(begin(a), end(a), 20);
+    auto p = auFind(begin(a), end(a), 2);
 
     if (p != end(a))
     {
@@ -60,9 +60,9 @@ void example01()
     }
 }
 
-void example02()
+void problem0102()
 {
-    vector<int> a = {3, 1, 20, 4, 7, 8, 5};
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
 
     vector<int>::iterator p = auFind(begin(a), end(a), 1);
 
@@ -76,15 +76,31 @@ void example02()
     }
 }
 
-void example03()
+void problem0201()
 {
-    vector<int> a = {3, 1, 20, 4, 7, 8, 5};
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
 
     auto it = auFindIf(begin(a), end(a), IsEven());
 
     if (it != end(a))
     {
-        cout << "The index of the first even number" << *it << " is " << it - begin(a) << endl;
+        cout << "The index of the first even number " << *it << " is " << it - begin(a) << endl;
+    }
+    else
+    {
+        cout << "even numbers not found" << endl;
+    }
+}
+
+void problem0202()
+{
+    vector<int> a = {3, 1, 20, 4, 7, 8, 5};
+
+    auto it = auFindIf(begin(a), end(a), [](int n) { return n % 2 == 0; });
+
+    if (it != end(a))
+    {
+        cout << "The index of the first even number " << *it << " is " << it - begin(a) << endl;
     }
     else
     {
@@ -303,5 +319,5 @@ void example16()
 
 int main()
 {
-    example15();
+    problem0201();
 }
