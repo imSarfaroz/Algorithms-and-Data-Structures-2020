@@ -180,7 +180,6 @@ void problem0502()
     cout << IterToMin->mName << " " << IterToMin->mGpa << endl;
 }
 
-
 void problem0601()
 {
     vector<Student> students = {
@@ -251,6 +250,72 @@ void problem0602()
     cout << "----" << endl;
 }
 
+void problem07()
+{
+    vector<Student> students = {
+        {"StudentD", 3.2},
+        {"StudentA", 4.0},
+        {"StudentX", 2.7},
+        {"StudentC", 2.7},
+        {"StudentR", 3.2},
+        {"StudentE", 3.2},
+        {"StudentR", 2.7},
+        {"StudentD", 4.0},
+        {"StudentA", 2.7},
+        {"StudentX", 2.7},
+        {"StudentC", 3.2},
+        {"StudentK", 4.0},
+        {"StudentE", 4.0},
+        {"StudentR", 2.7},
+        {"StudentR", 3.2},
+        {"StudentD", 2.7},
+        {"StudentA", 4.0},
+        {"StudentX", 3.2},
+        {"StudentC", 2.7},
+        {"StudentK", 4.0},
+        {"StudentE", 3.2},
+        {"StudentR", 4.0}};
+
+    auSelectSort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mName < s2.mName; });
+
+    for (const auto &s : students)
+    {
+        cout << s.mName << " " << s.mGpa << endl;
+    }
+    cout << "----" << endl;
+
+    //sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
+
+    stable_sort(begin(students), end(students), [](const Student &s1, const Student &s2) { return s1.mGpa < s2.mGpa; });
+
+    for (const auto &s : students)
+    {
+        cout << s.mName << " " << s.mGpa << endl;
+    }
+}
+
+void problem08()
+{
+    vector<int> v = {0, 4, 5, 10, 12, 20, 25, 40};
+
+    for (int x; cin >> x;)
+    {
+        auto p = auLowerBound(begin(v), end(v), x);
+        if (p == end(v))
+        {
+            cout << "No elements equal or greater than " << x << endl;
+        }
+        else if (*p == x)
+        {
+            cout << "index of element equal to " << x << " is " << p - begin(v) << endl;
+        }
+        else
+        {
+            cout << "index of element greater than " << x << " is " << p - begin(v) << endl;
+        }
+    }
+}
+
 void example13()
 {
     vector<tuple<string, int, double>> employees;
@@ -317,5 +382,5 @@ void example16()
 
 int main()
 {
-    problem0602();
+    problem08();
 }
