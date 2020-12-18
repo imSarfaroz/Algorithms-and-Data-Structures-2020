@@ -108,17 +108,17 @@ void problem0202()
     }
 }
 
-void example04()
+void problem0301()
 {
     int x;
     cin >> x;
-    vector<int> a = {3, 1, 20, 4, 7, 8, 5};
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
 
-    auto it = find_if(begin(a), end(a), GreaterThan(x));
+    auto it = auFindIf(begin(a), end(a), GreaterThan(x));
 
     if (it != end(a))
     {
-        cout << "number" << *it << " is the first number greater than " << x << endl;
+        cout << "number " << *it << " is the first number greater than " << x << endl;
     }
     else
     {
@@ -126,18 +126,18 @@ void example04()
     }
 }
 
-void example05()
+void problem0302()
 {
     int x;
     cin >> x;
 
-    vector<int> a = {3, 1, 20, 4, 7, 8, 5};
+    vector<int> a = {3, 1, 20, 4, 7, 0, 5};
 
-    auto it = find_if(begin(a), end(a), [x](int n) { return n > x; });
+    auto it = auFindIf(begin(a), end(a), [x](int n) { return n > x; });
 
     if (it != end(a))
     {
-        cout << "number" << *it << " is the first number greater than " << x << endl;
+        cout << "number " << *it << " is the first number greater than " << x << endl;
     }
     else
     {
@@ -145,10 +145,10 @@ void example05()
     }
 }
 
-void example07()
+void problem04()
 {
     vector<int> v = {3, 1, 2, 3, -2, 10};
-    auto p = min_element(begin(v), end(v));
+    auto p = auMinElement2(begin(v), end(v));
 
     if (p != end(v))
     {
@@ -319,5 +319,5 @@ void example16()
 
 int main()
 {
-    problem0201();
+    problem04();
 }
