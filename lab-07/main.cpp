@@ -316,71 +316,17 @@ void problem08()
     }
 }
 
-void example13()
+void problem09()
 {
-    vector<tuple<string, int, double>> employees;
-
-    string name;
-    int year;
-    double salary;
-
-    while (cin >> name >> year >> salary)
-    {
-        employees.emplace_back(name, year, salary);
-    }
-    sort(begin(employees), end(employees), [](const auto t1, const auto t2) { return get<1>(t1) < get<1>(t2); });
-
-    for (const auto &e : employees)
-    {
-        cout << get<0>(e) << " " << get<1>(e) << " " << get<2>(e) << endl;
-        //cout << p.first << " " << p.second << endl;
-    }
-}
-
-void example14()
-{
-    vector<int> v = {0, 4, 5, 6, 7, 3, 5, 6, 7, 20, 40};
+    vector<int> v = {0, 4, 5, 10, 12, 20, 25, 40};
 
     for (int x; cin >> x;)
     {
-        cout << (binary_search(begin(v), end(v), x) ? "Yes" : "No") << endl;
-    }
-}
-
-void example15()
-{
-    vector<int> v = {0, 4, 5, 6, 7, 3, 5, 6, 7, 20, 40};
-
-    for (int x; cin >> x;)
-    {
-        auto p = auLowerBound(begin(v), end(v), x);
-        if (p == end(v))
-        {
-            cout << "No elements equal or greated than " << x << endl;
-        }
-        else if (*p == x)
-        {
-            cout << "index of element equal to " << x << " is " << p - begin(v) << endl;
-        }
-        else
-        {
-            cout << "index of element greater than" << x << " is " << p - begin(v) << endl;
-        }
-    }
-}
-
-void example16()
-{
-    vector<int> v = {0, 4, 5, 10, 10, 10, 25, 25, 25, 20, 40};
-
-    for (int x; cin >> x;)
-    {
-        auto p = equal_range(begin(v), end(v), x);
-        cout << "Number of elements equal to " << x << " is " << p.second - p.first << endl;
+        cout << (auBinarySearch(begin(v), end(v), x) ? "Yes" : "No") << endl;
     }
 }
 
 int main()
 {
-    problem08();
+    problem09();
 }
