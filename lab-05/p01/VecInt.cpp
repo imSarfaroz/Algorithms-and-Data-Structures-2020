@@ -53,25 +53,20 @@ vecInt &vecInt::operator=(const vecInt &other)
     return *this;
 }
 
+
 vecInt::~vecInt()
 {
     std::cout << "~vecInt()" << std::endl;
     delete[] p;
 }
 
+
+
 void vecInt::pushBack(int x)
 {
     if (sz == cp)
     {
-        std::size_t newCp = sz == 0 ? 1 : cp * 2;
-        int *q = new int[newCp];
-        for (int i = 0; i < sz; i++)
-        {
-            q[i] = p[i];
-        }
-        delete[] p;
-        p = q;
-        cp = newCp;
+        reserve(sz == 0 ? 1 : cp * 2);
     }
     p[sz] = x;
     ++sz;
@@ -91,4 +86,64 @@ bool operator==(const vecInt &a, const vecInt &b)
         }
     }
     return true;
-};
+}
+
+void vecInt::reserve(std::size_t newCp)
+{
+    if(newCp <= cp)
+    {
+        return;
+    }
+
+    int *newP = new int[newCp];
+
+    auCopy(p, p + sz, newP);
+
+    delete[] p;
+    p = newP;
+    cp = newCp;
+}
+
+vecInt::Iter vecInt::insert(Iter pos, int x)
+{
+        std::size_t index = pos - p;
+        
+        if(sz == cp)
+        {
+            reserve(sz == 0 ? 1 : 2 * cp);
+        }
+
+
+        for (std::size_t i = sz; i > index; --i)
+        {
+            p[i] = p[i - 1];
+        }
+
+        p[index] = x;
+        ++sz;
+
+        return p + index;
+}
+
+vecInt::Iter vecInt::erase(Iter first, Iter last)
+{
+    auCopy(last, end(), first);
+
+    sz -= last - first;
+
+    return first;
+}
+
+vecInt::Iter vecInt::erase(Iter pos)
+{
+    std::size_t index = pos - p;
+
+    for (std::size_t i = index + 1; i < sz; i++)
+    {
+        p[i - 1] = p[i];
+    }
+
+    --sz;
+
+    return p + index;
+}

@@ -154,6 +154,48 @@ void problem0301()
     print(v);
 }
 
+void problem0302()
+{
+    vecInt v;
+
+    for (int x; cin >> x;)
+    {
+        v.pushBack(x);
+    }
+
+    print(v);
+
+    for (auto p = v.begin(); p != v.end();)
+    {
+        if (*p % 2 == 0)
+        {
+            p = v.insert(p, 0);
+            ++p;
+        }
+        ++p;
+    }
+
+    print(v);
+
+    for (auto p = v.begin(); p != v.end();)
+    {
+        if(*p % 2 == 0)
+        {
+            p = v.erase(p);
+        }
+        else
+        {
+            ++p;
+        }
+
+    }
+
+    // auto newEnd = remove_if(v.begin(), v.end(), [](int e) { return e % 2 == 0; });
+
+    // v.erase(newEnd, v.end());
+    print(v);
+}
+
 int main(void)
 {
     // vector<vecInt> v;

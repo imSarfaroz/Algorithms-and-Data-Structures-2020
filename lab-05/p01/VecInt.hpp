@@ -10,6 +10,9 @@ class vecInt
     std::size_t cp;
 
 public:
+    using Iter = int *;
+    using CIter = const int *;
+
     vecInt()
         : p(nullptr), sz(0), cp(0)
     {
@@ -54,16 +57,32 @@ public:
 
     ~vecInt();
 
-    int *begin() const
+    void reserve(std::size_t newCp);
+    Iter insert(Iter pos, int x);
+    Iter erase(Iter pos);
+    Iter erase(Iter first, Iter last);
+
+    Iter begin()
     {
         return p;
     }
 
-    int *end() const
+    Iter end()
     {
         return p + sz;
     }
 
+    CIter begin() const
+    {
+        return p;
+    }
+
+    CIter end() const
+    {
+        return p + sz;
+    }
+
+    
     std::size_t size() const
     {
         return sz;
