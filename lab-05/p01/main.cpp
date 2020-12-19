@@ -102,11 +102,57 @@ void problem0202()
     cout << endl;
 }
 
-struct Student
+template <typename Container>
+void print(const Container &v)
 {
-    string name;
-    vector<int> grades;
-};
+    for (auto e : v)
+    {
+        cout << " " << e;
+    }
+    cout << endl;
+}
+
+void problem0301()
+{
+    vector<int> v;
+
+    for (int x; cin >> x;)
+    {
+        v.push_back(x);
+    }
+
+    print(v);
+
+    for (auto p = v.begin(); p != v.end();)
+    {
+        if (*p % 2 == 0)
+        {
+            p = v.insert(p, 0);
+            ++p;
+        }
+        ++p;
+    }
+
+    print(v);
+
+    // for (auto p = v.begin(); p != v.end();)
+    // {
+    //     if(*p % 2 == 0)
+    //     {
+    //         p = v.erase(p);
+    //     }
+    //     else
+    //     {
+    //         ++p;
+    //     }
+
+    // }
+
+    auto newEnd = remove_if(v.begin(), v.end(), [](int e) { return e % 2 == 0; });
+
+    v.erase(newEnd, v.end());
+    print(v);
+}
 
 int main(void)
 {
@@ -119,5 +165,5 @@ int main(void)
 
     // cout << a.grades.size() << endl;
 
-    problem0202();
+    problem0301();
 }
