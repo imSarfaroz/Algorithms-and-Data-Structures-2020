@@ -94,17 +94,22 @@ int main()
     int numOfcases;
     cin >> numOfcases;
 
+    cin.ignore(numeric_limits<int>::max(), '\n');
     for (int mCase = 0; mCase < numOfcases; mCase++)
     {
+        if(mCase != 0)
+            cout << endl;
+
         vector<team> teams;
 
         string tourName;
-        cin >> tourName;
+        getline(cin, tourName);
         int n1 = 0;
         int n2 = 0;
 
         // initializing
         cin >> n1;
+        cin.ignore(numeric_limits<int>::max(), '\n');
         for (int i = 0; i < n1; i++)
         {
             string teamName;
@@ -115,6 +120,7 @@ int main()
 
         // game results
         cin >> n2;
+        cin.ignore(numeric_limits<int>::max(), '\n');
         for (int j = 0; j < n2; j++)
         {
             string game;
@@ -167,6 +173,14 @@ int main()
         cout << tourName << endl;
 
         // sorting
-        sort(teams.begin(), teams.end(), cmpByName());
+        sort(teams.begin(), teams.end(), cmpByResult());
+        //sort(teams.begin(), teams.end(), cmpByName());
+
+        int num = 1;
+        for(const auto &e: teams)
+            cout << num++ << e << endl;
+
+        teams.clear();
+        cin.clear();
     }
 }
