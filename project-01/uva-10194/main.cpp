@@ -62,8 +62,30 @@ struct cmpByResult
     bool operator()(const team &t1, const team &t2)
     {
         if (t1.allPoints != t2.allPoints)
-        {
-        }
+            return t1.allPoints > t2.allPoints;
+
+        if (t1.wins != t2.wins)
+            return t1.wins > t2.wins;
+
+        if (t1.allGoals != t2.allGoals)
+            return t1.allGoals > t2.allGoals;
+
+        if (t1.goalScored != t2.goalScored)
+            return t1.goalScored > t2.goalScored;
+
+        if (t1.numOfGames != t2.numOfGames)
+            return t1.numOfGames < t2.numOfGames;
+
+        string line1 = t1.name;
+        string line2 = t2.name;
+
+        for (char &e : line1)
+            e = tolower(e);
+
+        for (char &e : line2)
+            e = tolower(e);
+
+        return line1 < line2;
     }
 };
 
