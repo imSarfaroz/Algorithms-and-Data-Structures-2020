@@ -21,6 +21,23 @@ struct team
 
 struct cmpByName
 {
+    bool operator()(team &t1, team &t2)
+    {
+        string line1 = t1.name;
+        string line2 = t2.name;
+
+        for (char &e : line1)
+        {
+            e = tolower(e);
+        }
+
+        for (char &e : line2)
+        {
+            e = tolower(e);
+        }
+
+        return line1 < line2 && t1.numOfGames <= t2.numOfGames && t1.goalScored >= t2.goalScored && t1.goalAgainst >= t2.goalAgainst;
+    }
 };
 
 struct cmpByResult
@@ -102,5 +119,9 @@ int main()
             team1->allGoals = team1->goalScored - team1->goalAgainst;
             team2->allGoals = team2->goalScored - team2->goalAgainst;
         }
+        cout << tourName << endl;
+
+        // sorting
+        sort(teams.begin(), teams.end(), cmpByName());
     }
 }
