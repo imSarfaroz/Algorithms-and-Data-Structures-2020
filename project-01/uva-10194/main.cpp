@@ -63,8 +63,44 @@ int main()
             int special = game.find('@');
 
             string firstTeam = game.substr(0, goal1);
+            auto team1 = find_if(teams.begin(), teams.end(), [&firstTeam](const team &t) { return t.name == firstTeam; });
 
             string secondTeam = game.substr(goal2 + 1);
+            auto team2 = find_if(teams.begin(), teams.end(), [&secondTeam](const team &t) { return t.name == secondTeam; });
+
+            int goalFirst = stoi(game.substr(goal1 + 1, special - 1));
+            int goalSecond = stoi(game.substr(special + 1, goal2 - 1));
+
+            if (goalFirst > goalSecond)
+            {
+                team1->wins++;
+                team2->losses++;
+            }
+            else if (goalFirst < goalSecond)
+            {
+                team1->losses++;
+                team2->wins++;
+            }
+            else
+            {
+                team1->ties++;
+                team2->ties++;
+            }
+
+            team1->numOfGames++;
+            team2->numOfGames++;
+
+            team1->goalScored += goalFirst;
+            team1->goalAgainst += goalSecond;
+
+            team2->goalScored += goalSecond;
+            team2->goalAgainst += goalFirst;
+
+            team1->allPoints = team1->wins * 3 + team1->ties;
+            team2->allPoints = team2->wins * 3 + team2->ties;
+
+            team1->allGoals = team1->goalScored - team1->goalAgainst;
+            team2->allGoals = team2->goalScored - team2->goalAgainst;
         }
     }
 }
