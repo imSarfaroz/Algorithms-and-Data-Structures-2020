@@ -3,6 +3,10 @@
 #include <algorithm>
 #include <limits>
 #include <string>
+//struct team
+//functor cmpByName
+//functor cmpByResults
+//sort
 
 using namespace std;
 
@@ -17,6 +21,19 @@ struct team
     int wins;
     int losses;
     int ties;
+
+    team(const string &mName) : name(mName)
+    {
+    }
+
+    friend ostream &operator<<(ostream &output, const team &t)
+    {
+        output << ") " << t.name << " " << t.allPoints << "p, " << t.numOfGames << "g ";
+        output << "(" << t.wins << "-" << t.ties << "-" << t.losses;
+        output << t.allGoals << "gd" << t.goalScored << t.goalAgainst;
+
+        return output;
+    }
 };
 
 struct cmpByName
@@ -42,6 +59,12 @@ struct cmpByName
 
 struct cmpByResult
 {
+    bool operator()(const team &t1, const team &t2)
+    {
+        if (t1.allPoints != t2.allPoints)
+        {
+        }
+    }
 };
 
 int main()
