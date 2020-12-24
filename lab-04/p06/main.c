@@ -77,7 +77,7 @@ void problem05()
 
     printArray(v.p, v.sz);
 
-    Vecint_destroy(&v);
+    vecInt_destroy(&v);
 }
 
 int main(void)

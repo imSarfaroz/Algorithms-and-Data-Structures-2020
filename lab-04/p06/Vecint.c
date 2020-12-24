@@ -9,7 +9,7 @@ void vecInt_createOfSize(struct vecInt *This, int n, int initValue)
 
     for (size_t i = 0; i < This->sz; ++i)
     {
-        this->p[i] = initValue;
+        This->p[i] = initValue;
     }
 }
 
@@ -38,7 +38,7 @@ void vecInt_pushBack(struct vecInt *This, int x)
     ++This->sz;
 }
 
-void Vecint_destroy(struct VecInt *This)
+void vecInt_destroy(struct vecInt *This)
 {
     free(This->p);
 }

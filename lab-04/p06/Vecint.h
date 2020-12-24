@@ -16,6 +16,6 @@ void vecInt_createEmpty(struct vecInt *This);
 
 void vecInt_pushBack(struct vecInt *This, int x);
 
-void Vecint_destroy(struct VecInt This);
+void vecInt_destroy(struct vecInt *This);
 
 #endif

@@ -3,7 +3,6 @@
 
 std::size_t vecInt::counter = 0;
 
-
 vecInt::vecInt(size_t n)
     : p(new int[n]), sz(n), cp(n)
 {
@@ -23,12 +22,8 @@ vecInt::vecInt(std::initializer_list<int> init)
 vecInt::vecInt(const vecInt &other)
     : p(new int[other.sz]), sz(other.sz), cp(other.sz)
 {
-    counter += other.size(); 
+    counter += other.size();
     auCopy(other.begin(), other.end(), p);
-    // for (size_t i = 0; i < sz; i++)
-    // {
-    //     p[i] = other.p[i];
-    // }
 }
 
 // constructor -> distractor -> assignment operator
@@ -53,14 +48,11 @@ vecInt &vecInt::operator=(const vecInt &other)
     return *this;
 }
 
-
 vecInt::~vecInt()
 {
     std::cout << "~vecInt()" << std::endl;
     delete[] p;
 }
-
-
 
 void vecInt::pushBack(int x)
 {
@@ -90,7 +82,7 @@ bool operator==(const vecInt &a, const vecInt &b)
 
 void vecInt::reserve(std::size_t newCp)
 {
-    if(newCp <= cp)
+    if (newCp <= cp)
     {
         return;
     }
@@ -106,23 +98,22 @@ void vecInt::reserve(std::size_t newCp)
 
 vecInt::Iter vecInt::insert(Iter pos, int x)
 {
-        std::size_t index = pos - p;
-        
-        if(sz == cp)
-        {
-            reserve(sz == 0 ? 1 : 2 * cp);
-        }
+    std::size_t index = pos - p;
 
+    if (sz == cp)
+    {
+        reserve(sz == 0 ? 1 : 2 * cp);
+    }
 
-        for (std::size_t i = sz; i > index; --i)
-        {
-            p[i] = p[i - 1];
-        }
+    for (std::size_t i = sz; i > index; --i)
+    {
+        p[i] = p[i - 1];
+    }
 
-        p[index] = x;
-        ++sz;
+    p[index] = x;
+    ++sz;
 
-        return p + index;
+    return p + index;
 }
 
 vecInt::Iter vecInt::erase(Iter first, Iter last)

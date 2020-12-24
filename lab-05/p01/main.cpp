@@ -2,6 +2,9 @@
 #include <iostream>
 #include "VecInt.hpp"
 #include <vector>
+#include <algorithm>
+#include <string>
+#include <cctype>
 
 using namespace std;
 
@@ -179,7 +182,7 @@ void problem0302()
 
     for (auto p = v.begin(); p != v.end();)
     {
-        if(*p % 2 == 0)
+        if (*p % 2 == 0)
         {
             p = v.erase(p);
         }
@@ -187,7 +190,6 @@ void problem0302()
         {
             ++p;
         }
-
     }
 
     // auto newEnd = remove_if(v.begin(), v.end(), [](int e) { return e % 2 == 0; });
@@ -198,14 +200,5 @@ void problem0302()
 
 int main(void)
 {
-    // vector<vecInt> v;
-    // vecInt::counter = 0;
-    // v.push_back(vecInt(1000000));
-    // cout << vecInt::counter << endl;
-
-    // Student a = {"StudentA", {5, 5, 4, 5, 5}};
-
-    // cout << a.grades.size() << endl;
-
-    problem0301();
+    problem0102();
 }
