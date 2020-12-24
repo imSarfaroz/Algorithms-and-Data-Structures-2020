@@ -38,5 +38,33 @@ int main()
 
         string tourName;
         cin >> tourName;
+        int n1 = 0;
+        int n2 = 0;
+
+        // initializing
+        cin >> n1;
+        for (int i = 0; i < n1; i++)
+        {
+            string teamName;
+            getline(cin, teamName);
+
+            teams.emplace_back(teamName);
+        }
+
+        // game results
+        cin >> n2;
+        for (int j = 0; j < n2; j++)
+        {
+            string game;
+            getline(cin, game);
+
+            int goal1 = game.find('#');
+            int goal2 = game.find('#', goal1 + 1);
+            int special = game.find('@');
+
+            string firstTeam = game.substr(0, goal1);
+
+            string secondTeam = game.substr(goal2 + 1);
+        }
     }
 }
