@@ -13,14 +13,14 @@ using namespace std;
 struct team
 {
     string name;
-    int numOfGames;
-    int allGoals;
-    int goalScored;
-    int goalAgainst;
-    int allPoints;
-    int wins;
-    int losses;
-    int ties;
+    int numOfGames = 0;
+    int allGoals = 0;
+    int goalScored = 0;
+    int goalAgainst = 0;
+    int allPoints = 0;
+    int wins = 0;
+    int losses = 0;
+    int ties = 0;
 
     team(const string &mName) : name(mName)
     {
@@ -29,8 +29,8 @@ struct team
     friend ostream &operator<<(ostream &output, const team &t)
     {
         output << ") " << t.name << " " << t.allPoints << "p, " << t.numOfGames << "g ";
-        output << "(" << t.wins << "-" << t.ties << "-" << t.losses;
-        output << t.allGoals << "gd" << t.goalScored << t.goalAgainst;
+        output << "(" << t.wins << "-" << t.ties << "-" << t.losses << "), ";
+        output << t.allGoals << "gd (" << t.goalScored << "-" << t.goalAgainst << ")";
 
         return output;
     }
