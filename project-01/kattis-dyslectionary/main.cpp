@@ -29,11 +29,30 @@ int main()
     reorder(v);
 }
 
-void reorder(vector<string> &v);
+void reorder(vector<string> &v)
 {
-    //need to find length
-    //reverse
-    //sort
-    //reverse
-    //print
+    // finding max length
+    int max = 0;
+    for (auto e : v)
+    {
+        if (e.length() > max)
+        {
+            max = e.length();
+        }
+    }
+
+    //reverseing to sort in alph. order
+    for (auto &i : v)
+    {
+        reverse(i.begin(), i.end());
+    }
+
+    //sorting
+    sort(v.begin(), v.end());
+
+    //reversing to get initial words
+    for (auto &i : v)
+    {
+        reverse(i.begin(), i.end());
+    }
 }
