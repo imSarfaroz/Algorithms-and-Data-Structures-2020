@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     string atributes;
-    int index = 0;
+    int index;
     getline(cin, atributes);
 
     vector<string> vec;
@@ -31,7 +31,7 @@ int main()
     for (int i = 0; i < numOfSongs; i++)
     {
         vector<string> song;
-        for (int j = 0; j < numOfSongs; j++)
+        for (int j = 0; j < vec.size(); j++)
         {
             string s;
             cin >> s;
@@ -54,7 +54,7 @@ int main()
         cin >> nAttribute;
 
         // sort
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < vec.size(); i++)
         {
             if (vec[i] == nAttribute)
             {
@@ -74,7 +74,5 @@ int main()
             }
             cout << endl;
         }
-        //wrong computation
-        //print 
     }
 }
