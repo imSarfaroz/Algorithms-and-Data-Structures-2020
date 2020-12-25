@@ -64,5 +64,17 @@ int main()
         stable_sort(itunes.begin(), itunes.end(), [index](vector<string> a, vector<string> b) {
             return a[index] < b[index];
         });
+
+        cout << atributes << endl;
+        for(auto song: itunes)
+        {
+            for(auto property: song)
+            {
+                cout << property << " ";
+            }
+            cout << endl;
+        }
+        //wrong computation
+        //print 
     }
 }
