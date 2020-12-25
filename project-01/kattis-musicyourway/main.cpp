@@ -66,12 +66,17 @@ int main()
         });
 
         cout << atributes << endl;
-        for(auto song: itunes)
+        for (auto song : itunes)
         {
-            for(auto property: song)
+            for (auto property : song)
             {
                 cout << property << " ";
             }
+            cout << endl;
+        }
+
+        if (i != num - 1)
+        {
             cout << endl;
         }
     }
