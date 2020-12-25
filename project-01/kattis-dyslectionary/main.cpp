@@ -55,4 +55,19 @@ void reorder(vector<string> &v)
     {
         reverse(i.begin(), i.end());
     }
+
+    // Pad all strings with spaces
+    for (auto &i : v)
+    {
+        string temp;
+        temp.resize(max - i.length(), ' ');
+        temp += i;
+        swap(i, temp);
+    }
+
+    // Print the strings
+    for (auto i : v)
+    {
+        cout << i << endl;
+    }
 }
