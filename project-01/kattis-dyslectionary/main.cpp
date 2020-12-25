@@ -2,7 +2,6 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
 using namespace std;
 
 void reorder(vector<string> &v);
@@ -19,7 +18,7 @@ int main()
             reorder(v);
 
             cout << endl;
-            words.clear();
+            v.clear();
             continue;
         }
 
