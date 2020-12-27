@@ -7,75 +7,6 @@
 
 using namespace std;
 
-struct team;
-struct submission;
-struct cmpTeamByACMRules;
-
-int main()
-{
-    int numOfCases;
-    cin >> numOfCases;
-
-    for (int i = 0; i < numOfCases; i++)
-    {
-
-        vector<submission> sub;
-        vector<team> teams;
-        string line;
-        while (getline(cin, line) && line.empty())
-        {
-
-            istringstream inp(line);
-            int n1, n2, n3;
-            char res;
-
-            cin >> n1 >> n2 >> n3 >> res;
-
-            if (find_if(sub.begin(), sub.end(), [&n2, &n1](const submission &s) {
-                    return (s.problemRes == 'C' && s.problemRes == 'R' && s.problemRes == 'I');
-                }) == sub.end())
-                ;
-
-            if (find_if(teams.begin(), teams.end(), [&n1](const team &t) { return n1 == t.numOfTeam; }) == teams.end())
-                ;
-
-            for (auto &e : sub)
-            {
-                int numOfTeam = e.numOfTeam;
-                auto teamT = find_if(teams.begin(), teams.end(), [numOfTeam](const team &t) { return numOfTeam == t.numOfTeam; });
-
-                int numOfProblem = e.numOfProblem;
-                auto cProblem = find_if(sub.begin(), sub.end(), [numOfProblem, numOfTeam](const submission &s) {
-                    return s.numOfTeam == numOfTeam && s.numOfProblem == 'C' && numOfProblem == s.numOfProblem;
-                });
-
-                if (cProblem != sub.end())
-                {
-                    if (e.problemRes == 'I')
-                    {
-                        teamT->sumOfTime += 20;
-                    }
-
-                    if (e.problemRes == 'C')
-                    {
-                        teamT->sumOfTime += e.sumOfTime;
-                    }
-                }
-
-                if (e.problemRes == 'C' && e.numOfTeam == teamT->numOfTeam)
-                {
-                    teamT->problems++;
-                }
-
-                sort(teams.begin(), teams.end(), cmpTeamByACMRules());
-
-                for (const auto &t : teams)
-                    cout << t << endl;
-            }
-        }
-    }
-}
-
 struct team
 {
     int numOfTeam = 0;
@@ -119,6 +50,80 @@ struct cmpTeamByACMRules
         if (t1.sumOfTime != t2.sumOfTime)
             return t1.sumOfTime < t2.sumOfTime;
 
-        return t1.numOfTeam < t2.numOfTeam
+        return t1.numOfTeam < t2.numOfTeam;
     }
 };
+
+struct cmpTeamByNumber
+{
+    bool operator()(const team &t1, const team &t2)
+    {
+        return t1.numOfTeam < t2.numOfTeam;
+    }
+};
+
+int main()
+{
+    int numOfCases;
+    cin >> numOfCases;
+
+    cin.ignore(numeric_limits<int>::max(), '\n');
+    cin.ignore(numeric_limits<int>::max(), '\n');
+
+    for (int i = 0; i < numOfCases; i++)
+    {
+        if (i != 0)
+            cout << endl;
+
+        vector<submission> sub;
+        vector<team> teams;
+        string line;
+        while (getline(cin, line) && !line.empty())
+        {
+
+            istringstream inp(line);
+            int n1 = 0;
+            int n2 = 0;
+            int n3 = 0;
+            char res;
+
+            inp >> n1 >> n2 >> n3 >> res;
+
+            if (find_if(sub.begin(), sub.end(), [&n2, &n1](const submission &s) {
+                    return (s.problemRes == 'C' && s.problemRes == 'R' && s.problemRes == 'I');
+                }) == sub.end())
+                sub.emplace_back(n1, n2, n3, res);
+
+            if (find_if(teams.begin(), teams.end(), [&n1](const team &t) { return n1 == t.numOfTeam; }) == teams.end())
+                teams.emplace_back(n1);
+        }
+        for (auto &e : sub)
+        {
+            int numOfTeam = e.numOfTeam;
+            auto teamT = find_if(teams.begin(), teams.end(), [numOfTeam](const team &t) { return numOfTeam == t.numOfTeam; });
+
+            int numOfProblem = e.numOfProblem;
+            auto cProblem = find_if(sub.begin(), sub.end(), [numOfProblem, numOfTeam](const submission &s) {
+                return s.numOfTeam == numOfTeam && s.problemRes == 'C' && numOfProblem == s.numOfProblem;
+            });
+
+            if (cProblem != sub.end())
+            {
+                if (e.problemRes == 'I')
+                    teamT->sumOfTime += 20;
+
+                if (e.problemRes == 'C')
+                    teamT->sumOfTime += e.sumOfTime;
+            }
+
+            if (e.problemRes == 'C' && e.numOfTeam == teamT->numOfTeam)
+                teamT->problems++;
+        }
+
+        // sort(teams.begin(), teams.end(), cmpTeamByName());
+        sort(teams.begin(), teams.end(), cmpTeamByACMRules());
+
+        for (const auto &t : teams)
+            cout << t << endl;
+    }
+}
