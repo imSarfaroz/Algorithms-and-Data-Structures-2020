@@ -9,6 +9,7 @@ using namespace std;
 
 struct team;
 struct submission;
+struct cmpTeamByACMRules;
 
 int main()
 {
@@ -60,6 +61,16 @@ int main()
                         teamT->sumOfTime += e.sumOfTime;
                     }
                 }
+
+                if (e.problemRes == 'C' && e.numOfTeam == teamT->numOfTeam)
+                {
+                    teamT->problems++;
+                }
+
+                sort(teams.begin(), teams.end(), cmpTeamByACMRules());
+
+                for (const auto &t : teams)
+                    cout << t << endl;
             }
         }
     }
@@ -73,6 +84,12 @@ struct team
 
     team(const int &num) : numOfTeam(num)
     {
+    }
+
+    friend ostream &operator<<(ostream &output, const team &t)
+    {
+        output << t.numOfTeam << " " << t.problems << " " << t.sumOfTime;
+        return output;
     }
 };
 
@@ -89,5 +106,19 @@ struct submission
         numOfProblem = num2;
         sumOfTime = num3;
         problemRes = res;
+    }
+};
+
+struct cmpTeamByACMRules
+{
+    bool operator()(const team &t1, const team &t2)
+    {
+        if (t1.problems != t2.problems)
+            return t1.problems > t2.problems;
+
+        if (t1.sumOfTime != t2.sumOfTime)
+            return t1.sumOfTime < t2.sumOfTime;
+
+        return t1.numOfTeam < t2.numOfTeam
     }
 };
