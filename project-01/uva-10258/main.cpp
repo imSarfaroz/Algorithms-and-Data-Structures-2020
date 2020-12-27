@@ -11,7 +11,7 @@ struct team
 {
     int numOfTeam = 0;
     int problems = 0;
-    int sumOfTime = 0;
+    int totalTime = 0;
 
     team(const int &num) : numOfTeam(num)
     {
@@ -19,7 +19,7 @@ struct team
 
     friend ostream &operator<<(ostream &output, const team &t)
     {
-        output << t.numOfTeam << " " << t.problems << " " << t.sumOfTime;
+        output << t.numOfTeam << " " << t.problems << " " << t.totalTime;
         return output;
     }
 };
@@ -47,8 +47,8 @@ struct cmpTeamByACMRules
         if (t1.problems != t2.problems)
             return t1.problems > t2.problems;
 
-        if (t1.sumOfTime != t2.sumOfTime)
-            return t1.sumOfTime < t2.sumOfTime;
+        if (t1.totalTime != t2.totalTime)
+            return t1.totalTime < t2.totalTime;
 
         return t1.numOfTeam < t2.numOfTeam;
     }
@@ -110,10 +110,10 @@ int main()
             if (cProblem != sub.end())
             {
                 if (e.problemRes == 'I')
-                    teamT->sumOfTime += 20;
+                    teamT->totalTime += 20;
 
                 if (e.problemRes == 'C')
-                    teamT->sumOfTime += e.sumOfTime;
+                    teamT->totalTime += e.sumOfTime;
             }
 
             if (e.problemRes == 'C' && e.numOfTeam == teamT->numOfTeam)
@@ -125,5 +125,9 @@ int main()
 
         for (const auto &t : teams)
             cout << t << endl;
+
+        sub.clear();
+        teams.clear();
+        cin.clear();
     }
 }
