@@ -35,7 +35,7 @@ int main()
         {
             if (numbers[i - 1] == numbers[i])
             {
-                cout << "Contain dulicate" << endl;
+                cout << "Contains duplicate" << endl;
             }
         }
         cout << "Unique" << endl;
@@ -72,7 +72,7 @@ int main()
         auto q = upper_bound(numbers.begin(), numbers.end(), 999);
         for (auto i = p; i < q; i++)
         {
-            cout << blank << *i;
+            cout << (blank ? " " : "") << *i;
             blank = true;
         }
         cout << endl;
